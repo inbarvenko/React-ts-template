@@ -1,0 +1,114 @@
+@font-face {
+  font-family: "HeliosCondC"; 
+  src: url("./assets/fonts/HeliosCondC.otf") format("truetype"); 
+  font-style: normal; 
+  font-weight: normal; 
+} 
+
+
+.App {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #D3EBF8;
+}
+
+.close {
+  display: none;
+}
+
+.Calendar {
+  width: 100%;
+}
+
+.Modal {
+  width: 500px;
+  height: 400px;
+  background-color: #85c4ff;
+  padding: 20px;
+
+  color: #000;
+  font-family: 'HeliosCondC';
+
+}
+
+.Layout {
+  width: 100%;
+
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  
+  background-color: #FCFCFC;
+  border-radius: 16px;
+  border: 1px solid #F1F1F1;
+}
+
+.Header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  font-family: 'HeliosCondC';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  color: #000000;
+}
+
+.Text {
+  margin: 10px;
+}
+
+.Adapter {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  font-family: 'HeliosCondC';  
+}
+
+.rbc-month-view {
+  padding: 10px;
+  border-radius: 16px;
+}
+
+.rbc-month-header {
+  font-size: var(--size-text-xs);
+}
+
+.rbc-toolbar {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rbc-overlay-header {
+  color: #000;
+  font-family: 'HeliosCondC';  
+}
+
+.rbc-show-more {
+  border-radius: 2px;
+  border-color: #85c4ff !important;
+}
+
+
+
+.bubble-1 {
+  background-color: #5F6770 !important;
+}
+
+.bubble-2 {
+  background-color: #FF4D07 !important;
+}
+
+.rbc-selected {
+  background-color: #008CFF !important;
+}
