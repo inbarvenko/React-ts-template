@@ -1,4 +1,6 @@
+import './shared/assets/fonts/fonts.css';
 import './App.css';
+
 import { useCallback, useMemo, useState } from "react";
 import { Theme, presetGpnDefault } from "@consta/uikit/Theme";
 import { reactBigCalendarAdapter } from "@consta/react-big-calendar-adapter/reactBigCalendarAdapter";
@@ -8,7 +10,7 @@ import { backgroundEvent, events } from "./shared/constants/mock.data";
 import { momentLocalizer, Calendar } from "react-big-calendar";
 import HeaderWrapper from './App.styles';
 import { EventType } from './shared/types/types';
-import Modal from './features/modal';
+import Modal from './features/Modal';
 
 moment.locale("ru");
 const localizer = momentLocalizer(moment);
@@ -75,8 +77,11 @@ export default function App() {
 
         {isModalOpened &&
           <Modal
-            event={selectedEvent}
+            header='Данные о событии'
+            title={selectedEvent.title}
             onClose={onModalClose}
+            onSave={() => console.log('save')}
+            onDelete={() => console.log('delete')}
           />
         }
 
