@@ -1,28 +1,17 @@
 import { BiX } from "react-icons/bi";
 import ModalWrapper from "./ModalWrapper";
-import { ReactNode, useState } from "react";
-import { Button } from "../../../shared/ui/Button/Button";
-import { ButtonLoadingType, ButtonType } from "../types/types";
-
-type Props = {
-  header: string;
-  title: string;
-  description?: string;
-  extraInfo?: ReactNode;
-  onClose: () => void;
-  onSave?: () => void;
-  onDelete?: () => void;
-};
+import { useState } from "react";
+import { Button } from "../../Button/Button";
+import { ButtonLoadingType, ButtonType, ModalProps } from "../types/types";
 
 const Modal = ({
   header,
-  title,
-  description,
-  extraInfo,
+  children,
   onClose,
   onSave,
   onDelete,
-}: Props) => {
+  onEdit,
+}: ModalProps) => {
   const [isLoading, setLoading] = useState<ButtonLoadingType>({
     loading: false, type: ''});
 
@@ -34,6 +23,8 @@ const Modal = ({
         return onSave;
       case 'close':
         return onClose;
+      case 'edit':
+        return onEdit;
       default:
         return; 
     }
@@ -48,8 +39,9 @@ const Modal = ({
     if (!func) {
       return;
     }
-    
+
     setLoading({ loading: true, type});
+    
     func();
 
     setTimeout(() => {
@@ -65,19 +57,7 @@ const Modal = ({
       </div>
 
       <div className="body">
-        <div className="body-info">
-          <p className="body-info-title">Название:</p>
-          <p className="body-info-text">{title}</p>
-        </div>
-
-        {description && (
-          <div className="body-info">
-            <p className="body-info-title">Описание:</p>
-            <p className="body-info-text">{description}</p>
-          </div>
-        )}
-
-        {extraInfo}
+        {children}
 
         <div className="body-buttons">
           {onDelete && <Button
@@ -92,6 +72,12 @@ const Modal = ({
             type="primary"
             onClick={() => handleClick('save')}
             />}
+          {onEdit && <Button
+            loading={isLoading.loading && isLoading.type === 'edit'}
+            title="Изменить"
+            type="primary"
+            onClick={() => handleClick('edit')}
+          />}
         </div>
       </div>
     </ModalWrapper>

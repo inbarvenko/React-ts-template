@@ -1,110 +1,41 @@
-import './shared/assets/fonts/fonts.css';
-import './App.css';
+import "./shared/assets/fonts/fonts.css";
+import "./App.css";
+import CalendarPage from "./pages/calendar/CalendarPage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Sidebar from "./widgets/Sidebar/ui/Sidebar";
 
-import { useCallback, useMemo, useState } from "react";
-import { Theme, presetGpnDefault } from "@consta/uikit/Theme";
-import { reactBigCalendarAdapter } from "@consta/react-big-calendar-adapter/reactBigCalendarAdapter";
-import moment from "moment";
-import { backgroundEvent, events } from "./shared/constants/mock.data";
-
-import { momentLocalizer, Calendar } from "react-big-calendar";
-import HeaderWrapper from './App.styles';
-import { EventType } from './shared/types/types';
-import Modal from './features/Modal';
-
-moment.locale("ru");
-const localizer = momentLocalizer(moment);
+const router = [
+  {
+    path: "/",
+    element: <CalendarPage />,
+  },
+  {
+    path: "/calendar",
+    element: <CalendarPage />,
+  },
+  {
+    path: "/structure",
+    element: <CalendarPage />,
+  },
+  {
+    path: "/help",
+    element: <CalendarPage />,
+  },
+];
 
 export default function App() {
-  const { defaultDate } = useMemo(
-    () => ({
-      defaultDate: new Date(2022, 3, 1)
-    }),
-    []
-  );
-  const [isModalOpened, setModalOpen] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState<EventType>({} as EventType);
-
-  const { prefix, messages, views, formats, step } = reactBigCalendarAdapter({
-    doubled: false,
-    sliced: false,
-    className: "Adapter"
-  });
-
-  const eventPropGetter = useCallback(
-    (event, start, end, isSelected) => ({
-      ...(moment(start).hour() < 12 && {
-        className: 'bubble-1',
-      }),
-      ...(event.title.includes('Что-то') && {
-        className: 'bubble-2',
-      }),
-    }),
-    []
-  );
-
-  const onSelectEvent = (event: EventType) => {
-    setModalOpen(true);
-    setSelectedEvent(event);
-
-    const nodeModal = document.getElementsByClassName('rbc-overlay');
-    console.log(nodeModal[0]);
-    
-    
-    if(!nodeModal[0]) {
-        return;
-      }
-      
-    nodeModal[0].classList.add('close');
-  }
-
-  const onModalClose = () => {
-    setModalOpen(false);
-      
-    const nodeSelectedEvent = document.getElementsByClassName('rbc-selected');
-    nodeSelectedEvent[0].classList.remove('rbc-selected');
-  }
-
   return (
-    <div className='App'>
-      <div className="Layout">
-        <HeaderWrapper>
-          <div className='Header'>
-            <p className='Text'>Календарь ближайших событий</p>
-            <p className='Text'>Настройки</p>
-          </div>
-        </HeaderWrapper>
-
-        {isModalOpened &&
-          <Modal
-            header='Данные о событии'
-            title={selectedEvent.title}
-            onClose={onModalClose}
-            onSave={() => console.log('save')}
-            onDelete={() => console.log('delete')}
-          />
-        }
-
-        <Theme className='Calendar' preset={presetGpnDefault}>
-          <Calendar
-            popup
-            showMultiDayTimes
-            defaultView="month"
-            defaultDate={defaultDate}
-            events={events}
-            backgroundEvents={backgroundEvent}
-            localizer={localizer}
-            step={step}
-            tooltipAccessor={event => event.title}
-            className={prefix}
-            formats={formats}
-            views={views}
-            messages={messages}
-            eventPropGetter={eventPropGetter}
-            onSelectEvent={onSelectEvent}            
-          />{" "}
-        </Theme>
-      </div>
+    <div className="App">
+      <BrowserRouter>
+        <Sidebar />
+        <div className="Content">
+          <Routes>
+            {router.map((item) => (
+              <Route key={item.path} path={item.path} element={item.element} />
+            ))}
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }

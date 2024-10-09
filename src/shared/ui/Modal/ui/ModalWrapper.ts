@@ -3,6 +3,9 @@ import styled from "styled-components";
 const ModalWrapper = styled.div`
   position: absolute;
   z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   
   width: 80%;
   padding-bottom: 20px;

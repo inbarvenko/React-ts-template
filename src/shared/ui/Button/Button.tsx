@@ -7,13 +7,11 @@ type Props = ButtonProps & {
   onClick: () => void;
 };
 
-const ButtonLocal = ({title, onClick, ...props}: Props) => {
-  //TODO: если одна кнопка нажата - другую задизейблить
-  return (
-    <ButtonWrapper themеtype={ThemeEnum.light}>
-      <Button onClick={onClick} {...props}>{title}</Button>
-    </ButtonWrapper>
-  );
-};
-
+const ButtonLocal = ({ title, onClick, ...props }: Props) => (
+  <ButtonWrapper themеtype={ThemeEnum.light}>
+    <Button onClick={onClick} {...props}>
+      {title}
+    </Button>
+  </ButtonWrapper>
+);
 export { ButtonLocal as Button };
