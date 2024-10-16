@@ -14,4 +14,5 @@ const ButtonLocal = ({ title, onClick, ...props }: Props) => (
     </Button>
   </ButtonWrapper>
 );
-export { ButtonLocal as Button };
+
+export default ButtonLocal;

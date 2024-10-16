@@ -1,6 +1,7 @@
 .App {
   display: flex;
   justify-content: center;
+  align-items: center;
 
   overflow: hidden;
 }
@@ -21,38 +22,42 @@
 
 /* Chrome, Edge, and Safari */
 
-*::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 7px;
   height: 7px;
 }
 
-*::-webkit-scrollbar-button {
-  display: none;
-}
-
-*::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   border-radius: 0px;
   background-color: #dfe9eb;
 }
 
-*::-webkit-scrollbar-track:hover {
+::-webkit-scrollbar-track:hover {
   background-color: #dfe9eb;
 }
 
-*::-webkit-scrollbar-track:active {
+::-webkit-scrollbar-track:active {
   background-color: #dfe9eb;
 }
 
-*::-webkit-scrollbar-thumb {
-  background-color: #0079c2;
+::-webkit-scrollbar-thumb {
+  background-color: #bdbfc1;
 }
 
-*::-webkit-scrollbar-thumb:hover {
-  background-color: #0079c2;
+::-webkit-scrollbar-thumb:hover {
+  background-color: #bdbfc1;
 }
 
-*::-webkit-scrollbar-thumb:active {
-  background-color: #008ade;
+::-webkit-scrollbar-thumb:active {
+  background-color: #bdbfc1;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
 }
 
 /* Конец стилей для скроллбара */

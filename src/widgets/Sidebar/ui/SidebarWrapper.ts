@@ -4,18 +4,26 @@ import { ThemeEnum } from "../../../shared/constants/constants";
 
 const SidebarWrapper = styled.div<{
   collapsed: boolean;
-  themeLocal: ThemeEnum;
+  themelocal: ThemeEnum;
 }>`
-  /* min-width: ${(p) => (p.collapsed ? "75px" : "200px")}; */
+  min-width: ${(p) => (p.collapsed ? "75px" : "200px")};
+  max-width: ${(p) => (p.collapsed ? "75px" : "200px")};
+
   height: 100vh;
   overflow-y: hidden;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
 
   transition: 0.4s;
   background: linear-gradient(180deg, rgb(0, 121, 194) 40%, rgb(0, 74, 119));
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   .logo {
     width: ${(p) => (p.collapsed ? "40px" : "70px")};
@@ -23,17 +31,26 @@ const SidebarWrapper = styled.div<{
     &-collapsed {
       width: 25px;
     }
+
+    padding: 20px 0;
   }
 
   .arrowButton {
     transform: ${(p) => !p.collapsed && "rotate(180deg)"};
     transition: 0.4s;
+
+    margin: 20px 20px 20px 20px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .sidebar {
     width: 100%;
     box-sizing: border-box;
     padding: 0;
+    margin: 0;
 
     &-item {
       display: flex;
@@ -48,18 +65,40 @@ const SidebarWrapper = styled.div<{
     cursor: pointer;
 
     font-family: "HeliosCondC";
-    font-size: 16px;
+    font-size: 15px;
+
+    ${(p) =>
+      p.collapsed &&
+      css`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      `}
 
     &:hover {
-      background-color: #043b6b;
-      opacity: 0.4;
+      background-color: #043b6b8f;
     }
 
-    &:active {
-      background-color: #043b6b;
-      opacity: 0.4;
+    &-active {
+      ${(p) =>
+        p.collapsed &&
+        css`
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        `}
 
-      border-left: 5px solid ${(p) => colors[p.themeLocal].brightOrange};
+      position: relative;
+      width: 100%;
+      padding: 10px 15px 10px 10px;
+
+      cursor: pointer;
+
+      font-family: "HeliosCondC";
+      font-size: 15px;
+      background-color: #043b6baf;
+
+      border-left: 5px solid ${(p) => colors[p.themelocal].brightOrange};
     }
   }
 
@@ -85,7 +124,7 @@ const SidebarWrapper = styled.div<{
     display: none;
     height: 100%;
     box-sizing: border-box;
-    transition: "0.3s";
+    transition: 0.3s;
 
     &.level-1 {
       /* margin-left: 200px; */
@@ -94,7 +133,7 @@ const SidebarWrapper = styled.div<{
       left: 1px;
       width: 200px;
       background-color: #e1e1e1;
-      padding: 10px;
+      padding: 0px;
       display: block;
     }
 
@@ -105,19 +144,60 @@ const SidebarWrapper = styled.div<{
       left: 0px;
       width: 200px;
       background-color: #d1d1d1;
-      padding: 10px;
+      padding: 0px;
       display: block;
     }
   }
 
   .collapsed {
-    padding: 5px;
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  ${(p) =>
+  .user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    padding: 20px;
+    border-top: 1px solid #bdbfc1;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:active {
+      cursor: pointer;
+
+      background-color: #043b6b8f;
+    }
+
+    &-icon {
+      flex: 1;
+    }
+
+    &-name {
+      flex: 5;
+
+      font-family: "HeliosCondC";
+      font-size: 15px;
+
+      padding-left: 10px;
+      margin: 0px;
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: ${(p) => (p.collapsed ? "center" : "flex-end")};
+    justify-content: center;
+  }
+
+  /* ${(p) =>
     p.collapsed
       ? css`
           min-width: 100px;
@@ -131,8 +211,6 @@ const SidebarWrapper = styled.div<{
           }
         `
       : css`
-          min-width: 200px;
-
           @media (max-width: 768px) {
             min-width: 150px;
           }
@@ -140,7 +218,7 @@ const SidebarWrapper = styled.div<{
           @media (max-width: 425px) {
             min-width: 125px;
           }
-        `};
+        `}; */
 `;
 
 export default SidebarWrapper;

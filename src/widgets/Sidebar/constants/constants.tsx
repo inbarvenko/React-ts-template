@@ -19,18 +19,23 @@ export const sidersTitles: SiderItemType[] = [
     children: [
       {
         label: "Отчетные документы",
+        path: "/report",
       },
       {
         label: "Награждения",
+        path: "/reward",
       },
       {
         label: "Олимпиады",
+        path: "/olympiad",
       },
       {
         label: "Требования",
+        path: "/application",
       },
       {
         label: "Конфиденциальность",
+        path: "/privacy",
       },
       {
         label: "Регламенты",
@@ -54,6 +59,7 @@ export const sidersTitles: SiderItemType[] = [
       },
       {
         label: "Дополнительно",
+        path: "/additional",
       },
     ],
   },
