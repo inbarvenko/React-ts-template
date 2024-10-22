@@ -1,14 +1,16 @@
-import "./shared/assets/fonts/fonts.css";
+import "../shared/assets/fonts/fonts.css";
 import "./App.css";
-import CalendarPage from "./pages/CalendarPage/CalendarPage";
+import CalendarPage from "../pages/CalendarPage/CalendarPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Sidebar from "./widgets/Sidebar/ui/Sidebar";
+import { Sidebar } from "../widgets/Sidebar/index";
+import TablePage from "../pages/TablePage/TablePage";
+// import Header from "../widgets/Header/ui/Header";
 // import LoadingPage from "./pages/LoadingPage/LoadingPage";
 
 const router = [
   {
     path: "/",
-    element: <CalendarPage />,
+    element: <TablePage />,
   },
   {
     path: "/documents",
@@ -39,6 +41,7 @@ export default function App() {
         {/* <LoadingPage /> */}
         <>
           <Sidebar />
+          {/* <Header /> */}
           <div className="Content">
             <Routes>
               {router.map((item) => (

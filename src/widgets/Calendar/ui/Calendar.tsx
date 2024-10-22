@@ -19,18 +19,18 @@ import { DatePicker, Form, Input } from "antd";
 moment.locale("ru");
 const localizer = momentLocalizer(moment);
 
-const Calendar = () => {
+const Calendar: React.FC = () => {
   const { defaultDate } = useMemo(
     () => ({
       defaultDate: new Date(2022, 3, 1),
     }),
-    []
+    [],
   );
   const [isModalInfoOpened, setModalInfoOpen] = useState<boolean>(false);
   const [isModalFormOpened, setModalFormOpen] = useState<boolean>(false);
 
   const [selectedEvent, setSelectedEvent] = useState<EventType>(
-    {} as EventType
+    {} as EventType,
   );
 
   const { prefix, messages, views, formats, step } = reactBigCalendarAdapter({
@@ -48,7 +48,8 @@ const Calendar = () => {
       ...(event.title.includes("Что-то") && {
         className: "bubble-2",
       }),
-    }), []
+    }),
+    [],
   );
 
   const onSelectEvent = (event: EventType) => {
@@ -88,7 +89,9 @@ const Calendar = () => {
     setModalFormOpen(false);
   };
 
-  const ToolbarWithProps = (props: ToolbarProps) => <CustomToolbar onClickAdd={onModalFormOpen} {...props} />;
+  const ToolbarWithProps = (props: ToolbarProps) => (
+    <CustomToolbar onClickAdd={onModalFormOpen} {...props} />
+  );
 
   return (
     <CalendarWrapper>

@@ -17,7 +17,7 @@ const SidebarWrapper = styled.div<{
   justify-content: space-between;
 
   transition: 0.4s;
-  background: linear-gradient(180deg, rgb(0, 121, 194) 40%, rgb(0, 74, 119));
+  background: ${(p) => colors[p.themelocal].sidebar_gradient_lvl_1};
 
   .content {
     display: flex;
@@ -98,7 +98,8 @@ const SidebarWrapper = styled.div<{
       font-size: 15px;
       background-color: #043b6baf;
 
-      border-left: 5px solid ${(p) => colors[p.themelocal].brightOrange};
+      border-left: 5px solid
+        ${(p) => colors[p.themelocal].color_bright_orange_50};
     }
   }
 
@@ -107,14 +108,6 @@ const SidebarWrapper = styled.div<{
     text-decoration: none;
     color: inherit;
     display: flex;
-  }
-
-  .level-1 {
-    background-color: #e1e1e1;
-  }
-
-  .level-2 {
-    background-color: #d1d1d1;
   }
 
   .submenu {
@@ -127,10 +120,10 @@ const SidebarWrapper = styled.div<{
     transition: 0.3s;
 
     &.level-1 {
-      /* margin-left: 200px; */
+      background: ${(p) => colors[p.themelocal].sidebar_gradient_lvl_2};
+
       position: absolute;
       top: 0;
-      left: 1px;
       width: 200px;
       background-color: #e1e1e1;
       padding: 0px;
@@ -138,10 +131,10 @@ const SidebarWrapper = styled.div<{
     }
 
     &.level-2 {
-      /* margin-left: 200px; */
+      background: ${(p) => colors[p.themelocal].sidebar_gradient_lvl_3};
+
       position: absolute;
       top: 0;
-      left: 0px;
       width: 200px;
       background-color: #d1d1d1;
       padding: 0px;

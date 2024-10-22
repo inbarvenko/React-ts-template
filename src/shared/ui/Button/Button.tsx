@@ -7,7 +7,7 @@ type Props = ButtonProps & {
   onClick: () => void;
 };
 
-const ButtonLocal = ({ title, onClick, ...props }: Props) => (
+const ButtonLocal: React.FC<Props> = ({ title, onClick, ...props }: Props) => (
   <ButtonWrapper themеtype={ThemeEnum.light}>
     <Button onClick={onClick} {...props}>
       {title}

@@ -4,3 +4,17 @@
   font-style: normal;
   font-weight: normal;
 }
+
+@font-face {
+  font-family: "HeliosCondC";
+  src: url("./HeliosCond/HeliosCondC-Bold.otf") format("truetype");
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "HeliosCondBlack";
+  src: url("./HeliosCondBlack/HeliosCondBlackC.otf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}

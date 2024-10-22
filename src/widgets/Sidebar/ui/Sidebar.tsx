@@ -56,7 +56,6 @@ const Sidebar: React.FC = () => {
 
       const openSubmenu = (e: React.MouseEvent<HTMLDivElement>) => {
         e.stopPropagation();
-        navigate(item.path || "/");
 
         setMinimize(false);
         toggleSubmenu(currentPath);

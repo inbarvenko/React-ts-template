@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "antd/lib";
 import { ButtonLoadingType, ButtonType, ModalProps } from "../types/types";
 
-const Modal = ({
+const Modal: React.FC<ModalProps> = ({
   header,
   children,
   onClose,

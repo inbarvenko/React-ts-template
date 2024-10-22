@@ -11,9 +11,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ag-grid-community/theming": "^32.2.2",
     "@consta/react-big-calendar-adapter": "^0.2.3",
     "@consta/uikit": "^5.9.2",
     "@lottiefiles/dotlottie-react": "^0.9.1",
+    "ag-grid-react": "^32.2.2",
     "antd": "^5.21.2",
     "less-loader": "^12.2.0",
     "lottie-react": "^2.4.0",
