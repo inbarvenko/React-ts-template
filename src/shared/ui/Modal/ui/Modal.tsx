@@ -5,6 +5,7 @@ import { Button } from "antd/lib";
 import { ButtonLoadingType, ButtonType, ModalProps } from "../types/types";
 
 const Modal: React.FC<ModalProps> = ({
+  editable,
   header,
   children,
   onClose,
@@ -72,7 +73,19 @@ const Modal: React.FC<ModalProps> = ({
               loading={isLoading.loading && isLoading.type === "delete"}
               title="Удалить"
               onClick={() => handleClick("delete")}
-            />
+            >
+              Удалить
+            </Button>
+          )}
+          {editable && onEdit && (
+            <Button
+              loading={isLoading.loading && isLoading.type === "edit"}
+              title="Изменить"
+              type="primary"
+              onClick={() => handleClick("edit")}
+            >
+              Изменить
+            </Button>
           )}
           {onSave && (
             <Button
@@ -80,15 +93,9 @@ const Modal: React.FC<ModalProps> = ({
               title="Сохранить"
               type="primary"
               onClick={() => handleClick("save")}
-            />
-          )}
-          {onEdit && (
-            <Button
-              loading={isLoading.loading && isLoading.type === "edit"}
-              title="Изменить"
-              type="primary"
-              onClick={() => handleClick("edit")}
-            />
+            >
+              Сохранить
+            </Button>
           )}
         </div>
       </div>

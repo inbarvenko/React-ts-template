@@ -1,6 +1,7 @@
 export type EventType = {
-    id: number;
-    title: string;
-    start: Date;
-    end: Date;
+  id: number;
+  title: string;
+  allDay?: boolean;
+  start: Date;
+  end: Date;
 };

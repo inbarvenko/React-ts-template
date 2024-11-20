@@ -9,17 +9,19 @@ import { ThemeEnum } from "../../../shared/constants/constants";
 
 const Sidebar: React.FC = () => {
   const [minimize, setMinimize] = useState<boolean>(false);
-  const [openSubmenus, setOpenSubmenus] = useState<{ [key: string]: boolean }>(
-    {},
-  );
+  const [openSubmenus, setOpenSubmenus] = useState<string[]>([]);
   const buttonRef = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
   const localion = useLocation();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (!buttonRef.current?.contains(event.target as Node)) {
-        setOpenSubmenus({});
+      if (
+        openSubmenus.length &&
+        !buttonRef.current?.contains(event.target as Node)
+      ) {
+        console.log("click outside", openSubmenus.length);
+        setOpenSubmenus([]);
       }
     };
 
@@ -27,20 +29,22 @@ const Sidebar: React.FC = () => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, []);
+  }, [openSubmenus.length]);
 
   const toggleMenu = () => {
     setMinimize(!minimize);
-    setOpenSubmenus({});
+    setOpenSubmenus([]);
   };
 
   const toggleSubmenu = (path: string) => {
-    const isOpen = openSubmenus[path];
+    const isOpen = openSubmenus.includes(path);
 
-    setOpenSubmenus({
-      ...openSubmenus,
-      [path]: !isOpen,
-    });
+    if (isOpen) {
+      setOpenSubmenus(openSubmenus.filter((item) => item !== path));
+      return;
+    }
+
+    setOpenSubmenus([...openSubmenus, path]);
   };
 
   const onProfileClick = () => {
@@ -50,8 +54,7 @@ const Sidebar: React.FC = () => {
   const renderItems = (items: SiderItemType[], level = 0, parentPath = "") =>
     items.map((item, index) => {
       const currentPath = `${parentPath}${index}-`;
-      console.log(currentPath);
-      const isOpen = openSubmenus[currentPath];
+      const isOpen = openSubmenus.includes(currentPath);
       const context = minimize ? item.icon : item.label;
 
       const openSubmenu = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -62,8 +65,8 @@ const Sidebar: React.FC = () => {
       };
 
       const navigateOnClick = () => {
-        console.log(item);
         navigate(item.path || "/");
+        setOpenSubmenus([]);
       };
 
       const isCurrentPath =

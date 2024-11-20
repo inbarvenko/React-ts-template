@@ -2,20 +2,28 @@ import styled from "styled-components";
 
 const ModalWrapper = styled.div`
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
+
   width: 80%;
   padding-bottom: 20px;
-  
+
   color: #000;
   font-family: "HeliosCondC";
-  background-color: #FCFCFC;
+  background-color: #fcfcfc;
 
-  border: 1px solid #BABFC7;
+  border: 1px solid #babfc7;
   border-radius: 16px;
+
+  span {
+    font-family: "HeliosCondC";
+  }
+
+  input {
+    font-family: "HeliosCondC" !important;
+  }
 
   .modal-header {
     position: relative;
@@ -23,14 +31,14 @@ const ModalWrapper = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    
+
     width: 100%;
     height: 40px;
 
     font-size: 16px;
-    background-color: #E4E6E8;
+    background-color: #e4e6e8;
     border-radius: 16px 16px 0px 0px;
-    border-bottom: #BABFC7 1px solid;
+    border-bottom: #babfc7 1px solid;
   }
 
   .modal-close {
@@ -58,6 +66,10 @@ const ModalWrapper = styled.div`
       }
 
       &-text {
+        margin: 0px 0px 15px 0px;
+      }
+
+      &-range {
         margin: 0px 0px 15px 0px;
       }
     }

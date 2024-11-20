@@ -8,15 +8,13 @@
 }
 
 .Content {
-  /* Закоммитить, если боковое меню */
-  /* width: 100%; */
+  width: 100%;
 
   /* Закоммитить, если верхнее меню */
   height: 100vh;
   overflow: auto;
 
   background-color: #d3ebf8;
-  flex-grow: 1;
 }
 
 /* Стили для скроллбара */

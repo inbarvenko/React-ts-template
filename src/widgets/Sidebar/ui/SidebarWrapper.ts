@@ -111,7 +111,7 @@ const SidebarWrapper = styled.div<{
   }
 
   .submenu {
-    z-index: 3;
+    z-index: 4;
 
     margin-left: 20px;
     display: none;
@@ -189,29 +189,6 @@ const SidebarWrapper = styled.div<{
     align-items: ${(p) => (p.collapsed ? "center" : "flex-end")};
     justify-content: center;
   }
-
-  /* ${(p) =>
-    p.collapsed
-      ? css`
-          min-width: 100px;
-
-          @media (max-width: 768px) {
-            min-width: 75px;
-          }
-
-          @media (max-width: 425px) {
-            min-width: 50px;
-          }
-        `
-      : css`
-          @media (max-width: 768px) {
-            min-width: 150px;
-          }
-
-          @media (max-width: 425px) {
-            min-width: 125px;
-          }
-        `}; */
 `;
 
 export default SidebarWrapper;

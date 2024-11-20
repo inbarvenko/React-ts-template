@@ -1,0 +1,81 @@
+:root {
+  --fc-small-font-size: 0.85em;
+  --fc-page-bg-color: #fff;
+  --fc-neutral-bg-color: rgba(208, 208, 208, 0.3);
+  --fc-neutral-text-color: #808080;
+  --fc-border-color: #d9d9d9;
+
+  --fc-button-text-color: #ffffff;
+  --fc-button-bg-color: #015ea5;
+  --fc-button-border-color: #ffffff;
+  --fc-button-hover-bg-color: #2aa9f8;
+  --fc-button-hover-border-color: #ffffff;
+  --fc-button-active-bg-color: #0078d2;
+  --fc-button-active-border-color: none;
+
+  --fc-event-bg-color: #0071b2;
+  --fc-event-border-color: none;
+  --fc-event-text-color: #fff;
+  --fc-event-selected-overlay-color: rgba(0, 0, 0, 0.25);
+
+  --fc-more-link-bg-color: #d0d0d0;
+  --fc-more-link-text-color: inherit;
+
+  --fc-event-resizer-thickness: 8px;
+  --fc-event-resizer-dot-total-width: 8px;
+  --fc-event-resizer-dot-border-width: 1px;
+
+  --fc-non-business-color: rgba(215, 215, 215, 0.3);
+  --fc-bg-event-color: rgb(143, 223, 130);
+  --fc-bg-event-opacity: 0.3;
+  --fc-highlight-color: rgba(188, 232, 241, 0.3);
+  --fc-today-bg-color: #0071b226;
+  --fc-now-indicator-color: red;
+}
+
+.fc-button {
+  padding: 4px 10px !important;
+}
+
+.fc-daygrid-event-harness {
+  background-color: var(--fc-event-bg-color);
+  color: var(--fc-button-text-color);
+  border-radius: 4px;
+}
+
+.event {
+  display: flex;
+  border-radius: 4px;
+  width: 100%;
+  height: inherit;
+  align-items: center;
+  padding-inline: 5px;
+  cursor: pointer;
+  justify-content: space-between;
+  transition: 0.2s;
+}
+
+.event:hover {
+  background-color: #008ade;
+}
+
+.busy {
+  background-color: #e4212b;
+}
+
+.busy:hover {
+  background-color: #c91d26;
+}
+
+.fc-timegrid-slot {
+  height: 50px !important;
+  /* Изменяем высоту каждой ячейки */
+}
+
+.fc-event-main {
+  padding: 0 !important;
+}
+
+.fc-timegrid-slot-label-cushion {
+  color: var();
+}

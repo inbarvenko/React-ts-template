@@ -5,7 +5,7 @@ const LayoutWrapper = styled.div`
   position: relative;
 
   margin: 20px;
-  height: calc(100vh - 40px);
+  min-height: calc(100vh - 40px);
   display: flex;
   align-items: center;
   justify-content: center;
