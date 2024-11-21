@@ -4,6 +4,7 @@ import CalendarPage from "../pages/CalendarPage/CalendarPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Sidebar } from "../widgets/Sidebar/index";
 import TablePage from "../pages/TablePage/TablePage";
+import HelpPage from "../pages/HelpPage/HelpPage";
 // import Header from "../widgets/Header/ui/Header";
 // import LoadingPage from "./pages/LoadingPage/LoadingPage";
 
@@ -26,7 +27,7 @@ const router = [
   },
   {
     path: "/help",
-    element: <CalendarPage />,
+    element: <HelpPage />,
   },
   {
     path: "/profile",

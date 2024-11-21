@@ -35,7 +35,7 @@ const ModalWrapper = styled.div`
     width: 100%;
     height: 40px;
 
-    font-size: 16px;
+    font-size: 14px;
     background-color: #e4e6e8;
     border-radius: 16px 16px 0px 0px;
     border-bottom: #babfc7 1px solid;
@@ -60,17 +60,22 @@ const ModalWrapper = styled.div`
     &-info {
       display: flex;
       flex-direction: column;
+      font-size: 14px;
 
       &-title {
         margin: 5px 0px 5px 0px;
       }
 
       &-text {
-        margin: 0px 0px 15px 0px;
+        margin: 0px 0px 15px 12px;
       }
 
       &-range {
         margin: 0px 0px 15px 0px;
+      }
+
+      &-input {
+        margin: 0px 0px 10px 0px;
       }
     }
 

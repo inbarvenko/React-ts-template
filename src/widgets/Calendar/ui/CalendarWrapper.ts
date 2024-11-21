@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../../shared/assets/colors";
-import { ThemeEnum } from "../../../shared/constants/constants";
+import { ThemeEnum } from "../../../shared/constants/theme";
 
 export const CalendarWrapper = styled.div<{ themelocal: ThemeEnum }>`
   font-family: "HeliosCondC";
@@ -25,7 +25,7 @@ export const CalendarWrapper = styled.div<{ themelocal: ThemeEnum }>`
     colors[p.themelocal].color_bright_blue_50};
   --fc-button-active-border-color: rgba(0, 66, 105, 0.28);
 
-  --fc-event-bg-color: ${(p) => colors[p.themelocal].color_bright_orange_50};
+  --fc-event-bg-color: --fc-non-business-color;
   --fc-event-border-color: none;
   --fc-event-text-color: ${(p) => colors[p.themelocal].color_text};
   --fc-event-selected-overlay-color: rgba(0, 0, 0, 0.25);
@@ -56,6 +56,10 @@ export const CalendarWrapper = styled.div<{ themelocal: ThemeEnum }>`
 
   .fc-toolbar-chunk {
     display: flex;
+  }
+
+  .fc-event-time {
+    overflow: visible;
   }
 
   a {
@@ -198,6 +202,12 @@ export const CalendarWrapper = styled.div<{ themelocal: ThemeEnum }>`
     &-item {
       margin-bottom: 0px;
     }
+
+    &-color {
+      flex-direction: row;
+      padding: 20px 0px;
+    }
+
     padding: 20px 0px;
   }
 

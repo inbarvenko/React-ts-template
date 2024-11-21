@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { colors } from "../../../shared/assets/colors";
-import { ThemeEnum } from "../../../shared/constants/constants";
+import { ThemeEnum } from "../../../shared/constants/theme";
 
 const SidebarWrapper = styled.div<{
   collapsed: boolean;

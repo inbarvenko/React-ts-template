@@ -14,11 +14,14 @@ import {
   EventClickArg,
   FormatterInput,
 } from "@fullcalendar/core/index.js";
-import { ThemeEnum } from "../../../shared/constants/constants";
+import { ThemeEnum } from "../../../shared/constants/theme";
 import moment from "moment";
 import { ModalEventType } from "../../../features/Modals/types/eventTypes";
 import { EventType } from "../types/types";
 import dayjs from "dayjs";
+import ColorPicker from "../../../shared/ui/ColorPicker/ColorPicker";
+import { defaultColor, noColor } from "../../../shared/constants/presets";
+import { getTextColor } from "../../../shared/model/getTextColor";
 
 type Props = {
   schedule: EventType[];
@@ -36,15 +39,19 @@ const Calendar: React.FC<Props> = ({ schedule }: Props) => {
 
   const events = useMemo(
     () =>
-      schedule.map((event) => ({
-        title: event.title,
-        start: event.start,
-        end: event.end,
-        extendedProps: {
-          textColor: "black",
-          eventBackgroundColor: "red",
-        },
-      })),
+      schedule.map((event) => {
+        const difference = event.end.getDate() - event.start.getDate();
+        const eventColor = difference > 1 ? defaultColor : noColor;
+        const backgroundColor = event.color || eventColor;
+
+        return {
+          title: event.title,
+          start: event.start,
+          end: event.end,
+          backgroundColor: backgroundColor,
+          textColor: getTextColor(backgroundColor),
+        };
+      }),
     [schedule],
   );
 
@@ -53,7 +60,6 @@ const Calendar: React.FC<Props> = ({ schedule }: Props) => {
       return;
     }
 
-    console.log("Event selection", arg.event);
     setSelectedEvent({
       eventTitle: arg.event.title,
       eventStart: arg.event.startStr,
@@ -70,9 +76,6 @@ const Calendar: React.FC<Props> = ({ schedule }: Props) => {
 
   const onModalEventClose = () => {
     setModalEventOpen(false);
-
-    // const nodeSelectedEvent = document.getElementsByClassName("fc-popover");
-    // nodeSelectedEvent[0].classList.remove("fc-popover");
   };
 
   const openAddModalWithButton = (event: MouseEvent) => {
@@ -90,7 +93,7 @@ const Calendar: React.FC<Props> = ({ schedule }: Props) => {
       return;
     }
 
-    console.log("SLot info", selectionInfo);
+    console.log("Slot info", selectionInfo);
 
     setSelectedEvent({
       eventTitle: "",
@@ -102,6 +105,15 @@ const Calendar: React.FC<Props> = ({ schedule }: Props) => {
 
   const onAddModalClose = () => {
     setAddModalOpen(false);
+  };
+
+  const onAddModalSave = () => {
+    setAddModalOpen(false);
+  };
+
+  const onDeleteModal = () => {
+    console.log("delete");
+    setModalEventOpen(false);
   };
 
   const calendarConfig = useMemo(
@@ -125,7 +137,7 @@ const Calendar: React.FC<Props> = ({ schedule }: Props) => {
         //Отрисовка панели над календарём
         left: "title",
         center:
-          "dayGridMonth,timeGridWeek,timeGridDay,quarterGrid,multiMonthYear",
+          "multiMonthYear,quarterGrid,dayGridMonth,timeGridWeek,timeGridDay",
         right: "prev,today,next addEventButton",
       },
       views: {
@@ -195,18 +207,17 @@ const Calendar: React.FC<Props> = ({ schedule }: Props) => {
           header="Данные о событии"
           event={selectedEvent}
           onClose={onModalEventClose}
-          onSave={() => console.log("save")}
-          onDelete={() => console.log("delete")}
+          onDelete={onDeleteModal}
         />
       )}
 
       {isAddModalOpened && !isModalEventOpened && (
         <ModalForm
           header="Создание события"
+          deleteTitle="Отмена"
           onClose={onAddModalClose}
-          onSave={() => console.log("save")}
-          onDelete={() => console.log("delete")}
-          onEdit={() => console.log("edit")}
+          onSave={onAddModalSave}
+          onDelete={onAddModalClose}
         >
           <div className="form">
             <Form.Item
@@ -219,19 +230,28 @@ const Calendar: React.FC<Props> = ({ schedule }: Props) => {
             </Form.Item>
 
             <Form.Item
-              name="start"
+              name="duration"
               label="Длительность события"
               rules={[{ required: true }]}
               className="form-item"
+              initialValue={[
+                dayjs(selectedEvent?.eventStart),
+                dayjs(selectedEvent?.eventEnd),
+              ]}
             >
               <RangePicker
                 showTime
                 placeholder={["Выберите дату начала", "Выберите дату конца"]}
-                defaultValue={[
-                  dayjs(selectedEvent?.eventStart),
-                  dayjs(selectedEvent?.eventEnd),
-                ]}
               />
+            </Form.Item>
+
+            <Form.Item
+              layout="horizontal"
+              name="color"
+              label="Цвет события"
+              className="form-item"
+            >
+              <ColorPicker />
             </Form.Item>
           </div>
         </ModalForm>
@@ -245,6 +265,7 @@ const Calendar: React.FC<Props> = ({ schedule }: Props) => {
         allDaySlot={false} //Убираю строку которая отображает события на весь день
         dayMaxEvents={5}
         height="auto"
+        eventDisplay="block"
         initialView="dayGridMonth"
         slotDuration="00:15:00" //Продолжительность ячейки календаря в неделях и днях
         slotMinTime="08:30:00" //Время начала календаря

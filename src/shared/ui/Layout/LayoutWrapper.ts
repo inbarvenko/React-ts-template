@@ -3,6 +3,8 @@ import { colors } from "../../assets/colors";
 
 const LayoutWrapper = styled.div`
   position: relative;
+  width: 100%;
+  max-width: calc(100% - 40px);
 
   margin: 20px;
   min-height: calc(100vh - 40px);

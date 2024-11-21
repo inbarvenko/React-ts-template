@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../assets/colors";
-import { ThemeEnum } from "../../constants/constants";
+import { ThemeEnum } from "../../constants/theme";
 
 const ButtonWrapper = styled.div<{ themеtype: ThemeEnum }>`
   .ant-btn {

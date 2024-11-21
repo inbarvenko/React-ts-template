@@ -1,6 +1,6 @@
 import { Button, ButtonProps } from "antd";
 import ButtonWrapper from "./ButtonWrapper";
-import { ThemeEnum } from "../../constants/constants";
+import { ThemeEnum } from "../../constants/theme";
 
 type Props = ButtonProps & {
   title: string;

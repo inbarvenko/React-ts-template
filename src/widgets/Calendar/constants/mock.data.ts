@@ -1,3 +1,5 @@
+import { colors } from "../../../shared/assets/colors";
+
 const now = new Date();
 
 export const events = [
@@ -41,6 +43,7 @@ export const events = [
     start: new Date(2024, 10, 11),
     end: new Date(2024, 10, 13),
     desc: "Важная конференция для важных людей",
+    color: colors["light"].color_bright_orange_50,
   },
   {
     id: 6,
@@ -48,6 +51,7 @@ export const events = [
     start: new Date(2024, 10, 12, 10, 30, 0, 0),
     end: new Date(2024, 10, 12, 12, 30, 0, 0),
     desc: "Встреча для подготовки к другой встрече",
+    color: "#a45252",
   },
   {
     id: 7,
@@ -122,12 +126,14 @@ export const events = [
     title: "Сегодня",
     start: new Date(new Date().setHours(new Date().getHours() - 3)),
     end: new Date(new Date().setHours(new Date().getHours() + 3)),
+    color: colors["light"].color_bright_orange_50,
   },
   {
     id: 15,
     title: "Вы находитесь здесь",
     start: now,
-    end: now,
+    end: new Date(new Date().setMinutes(new Date().getMinutes() + 3)),
+    color: "#ffd3d3",
   },
   {
     id: 16,

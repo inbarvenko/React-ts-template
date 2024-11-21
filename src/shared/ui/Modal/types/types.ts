@@ -9,8 +9,10 @@ export type ButtonLoadingType = {
 
 export type ModalProps = {
   editable?: boolean;
+  showEditButton?: boolean;
   header: string;
   children?: ReactNode;
+  deleteTitle?: string;
   onClose: () => void;
   onSave?: () => void;
   onDelete?: () => void;

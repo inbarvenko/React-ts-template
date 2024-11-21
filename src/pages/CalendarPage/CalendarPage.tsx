@@ -5,7 +5,7 @@ import { events } from "../../widgets/Calendar/constants/mock.data";
 
 const CalendarPage = () => (
   <CalendarPageWrapper>
-    <Layout title="Календарь 2024">
+    <Layout title="Календарь">
       <Calendar schedule={events} />
     </Layout>
   </CalendarPageWrapper>

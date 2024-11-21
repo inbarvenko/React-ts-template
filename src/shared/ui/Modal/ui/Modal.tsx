@@ -6,7 +6,9 @@ import { ButtonLoadingType, ButtonType, ModalProps } from "../types/types";
 
 const Modal: React.FC<ModalProps> = ({
   editable,
+  showEditButton = true,
   header,
+  deleteTitle,
   children,
   onClose,
   onSave,
@@ -49,7 +51,7 @@ const Modal: React.FC<ModalProps> = ({
 
     setTimeout(() => {
       setLoading({ loading: false, type: "" });
-    }, 10000);
+    }, 1000);
   };
 
   return (
@@ -71,13 +73,13 @@ const Modal: React.FC<ModalProps> = ({
             <Button
               danger
               loading={isLoading.loading && isLoading.type === "delete"}
-              title="Удалить"
+              title={deleteTitle || "Удалить"}
               onClick={() => handleClick("delete")}
             >
-              Удалить
+              {deleteTitle || "Удалить"}
             </Button>
           )}
-          {editable && onEdit && (
+          {showEditButton && editable && onEdit && (
             <Button
               loading={isLoading.loading && isLoading.type === "edit"}
               title="Изменить"

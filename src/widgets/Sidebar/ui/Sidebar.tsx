@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { BiChevronsRight, BiUser } from "react-icons/bi";
 import { SiderItemType } from "../types/types";
 import SidebarWrapper from "./SidebarWrapper";
-import { ThemeEnum } from "../../../shared/constants/constants";
+import { ThemeEnum } from "../../../shared/constants/theme";
 
 const Sidebar: React.FC = () => {
   const [minimize, setMinimize] = useState<boolean>(false);
@@ -20,7 +20,6 @@ const Sidebar: React.FC = () => {
         openSubmenus.length &&
         !buttonRef.current?.contains(event.target as Node)
       ) {
-        console.log("click outside", openSubmenus.length);
         setOpenSubmenus([]);
       }
     };
