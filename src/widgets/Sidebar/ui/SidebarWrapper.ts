@@ -76,7 +76,7 @@ const SidebarWrapper = styled.div<{
       `}
 
     &:hover {
-      background-color: #043b6b8f;
+      background-color: ${colors["light"].menu_item_background};
     }
 
     &-active {
@@ -96,12 +96,18 @@ const SidebarWrapper = styled.div<{
 
       font-family: "HeliosCondC";
       font-size: 15px;
-      background-color: #043b6baf;
+      background-color: ${colors["light"].menu_item_background};
 
       border-left: 5px solid
         ${(p) => colors[p.themelocal].color_bright_orange_50};
     }
   }
+
+  /* .item-level {
+    &-0 {
+      font-weight: bold;
+    }
+  } */
 
   a.menu-item {
     transition: 0.3s;
@@ -118,27 +124,38 @@ const SidebarWrapper = styled.div<{
     height: 100%;
     box-sizing: border-box;
     transition: 0.3s;
+    padding: 0px;
+
+    &-title {
+      padding: 20px 0 10px 0;
+      font-family: "HeliosCondC";
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      align-self: center;
+    }
 
     &.level-1 {
-      background: ${(p) => colors[p.themelocal].sidebar_gradient_lvl_2};
-
+      display: flex;
+      flex-direction: column;
       position: absolute;
       top: 0;
+
       width: 200px;
+
+      background: ${(p) => colors[p.themelocal].sidebar_gradient_lvl_2};
       background-color: #e1e1e1;
-      padding: 0px;
-      display: block;
     }
 
     &.level-2 {
-      background: ${(p) => colors[p.themelocal].sidebar_gradient_lvl_3};
-
+      display: flex;
+      flex-direction: column;
       position: absolute;
       top: 0;
+
       width: 200px;
+
+      background: ${(p) => colors[p.themelocal].sidebar_gradient_lvl_3};
       background-color: #d1d1d1;
-      padding: 0px;
-      display: block;
     }
   }
 

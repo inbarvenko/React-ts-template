@@ -26,6 +26,10 @@ const router = [
     element: <CalendarPage />,
   },
   {
+    path: "/forms",
+    element: <CalendarPage />,
+  },
+  {
     path: "/help",
     element: <HelpPage />,
   },

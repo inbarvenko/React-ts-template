@@ -1,6 +1,7 @@
 import {
   BiCalendarAlt,
   BiFileBlank,
+  BiFolder,
   BiGitRepoForked,
   BiHelpCircle,
   BiHomeAlt2,
@@ -67,6 +68,11 @@ export const sidersTitles: SiderItemType[] = [
     label: "Структура организации",
     path: "/structure",
     icon: <BiGitRepoForked size={20} />,
+  },
+  {
+    label: "Формы",
+    path: "/forms",
+    icon: <BiFolder size={20} />,
   },
   {
     label: "Календарь",

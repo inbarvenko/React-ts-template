@@ -9,6 +9,10 @@ import prettierPlugin from "eslint-plugin-prettier";
 import eslintConfigPrettier from "eslint-config-prettier";
 import eslintAutofix from "eslint-plugin-autofix";
 
+// js airbnb config
+// ts and js должны быть одинаковые для style-coding
+// 502, 404, 403 (forbidden), 401(?) - картинки, компонент Result (antd)
+
 /** @type {import("eslint").Linter.Config[]} */
 export default tseslint.config(
   { files: ["**/*.{ts,tsx}"] },
@@ -30,30 +34,35 @@ export default tseslint.config(
       "react-hooks": eslintReactHooks,
       react: eslintReact,
       "react-refresh": eslintReactRefresh,
-      prettier: prettierPlugin,
       autofix: eslintAutofix,
-      "import/order": [
-        "error",
-        {
-          groups: [
-            "builtin",
-            "external",
-            "parent",
-            "sibling",
-            "index",
-            "object",
-            "type",
-          ],
-          pathGroups: [
-            {
-              pattern: "@/**/**",
-              group: "parent",
-              position: "before",
-            },
-          ],
-          alphabetize: { order: "asc" },
-        },
-      ],
+      // + async await plugin
+      // + unicorn plugin
+      // + sonarjs plugin
+
+      // "import/order": [
+      //   "error",
+      //   {
+      //     groups: [
+      //       "builtin",
+      //       "external",
+      //       "parent",
+      //       "sibling",
+      //       "index",
+      //       "object",
+      //       "type",
+      //     ],
+      //     pathGroups: [
+      //       {
+      //         pattern: "@/**/**",
+      //         group: "parent",
+      //         position: "before",
+      //       },
+      //     ],
+      //     alphabetize: { order: "asc" },
+      //   },
+      // ],
+
+      prettier: prettierPlugin,
     },
   },
   {

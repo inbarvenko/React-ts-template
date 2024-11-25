@@ -16,7 +16,7 @@ const LayoutWrapper = styled.div`
 
   background-color: #fcfcfc;
   border-radius: 16px;
-  border: 1px solid #f1f1f1;
+  border: 1px solid ${colors["light"].border_color};
 
   .header {
     width: 100%;

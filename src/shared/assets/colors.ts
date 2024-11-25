@@ -24,10 +24,14 @@ export const colors = {
       "linear-gradient(180deg, rgb(123, 174, 208) 40%, rgb(0, 74, 119))",
     color_text: "#282828",
     none: "none",
+    border_color: "#BABFC7",
+    links: "#2196F3",
+
+    // Кастомные цвета для меню
+    menu_item_background: "rgba(4,59,107,0.39)",
 
     // Кастомные цвета для таблицы
     table_title_background: "#EFEFF0",
-    table_stroke: "#BABFC7",
   },
   light: {
     color_main_white_0: "#FFFFFF",
@@ -54,9 +58,13 @@ export const colors = {
       "linear-gradient(180deg, rgb(123, 174, 208) 40%, rgb(94, 133, 159))",
     color_text: "#282828",
     none: "rgba(0,0,0,0)",
+    border_color: "#BABFC7",
+    links: "#2196F3",
+
+    // Кастомные цвета для меню
+    menu_item_background: "rgba(4,59,107,0.39)",
 
     // Кастомные цвета для таблицы
     table_title_background: "#EFEFF0",
-    table_stroke: "#BABFC7",
   },
 };

@@ -7,7 +7,7 @@ const TablePageWrapper = styled.div`
   }
 
   .body-style {
-    border: 1px solid ${() => colors["light"].table_stroke};
+    border: 1px solid ${() => colors["light"].border_color};
   }
 
   .ag-theme-quartz {
@@ -16,7 +16,7 @@ const TablePageWrapper = styled.div`
     --ag-header-background-color: ${() =>
       colors["light"].table_title_background};
     --ag-wrapper-border-radius: 0 0 16px 16px;
-    --ag-border-color: ${() => colors["light"].table_stroke};
+    --ag-border-color: ${() => colors["light"].border_color};
   }
 `;
 

@@ -77,7 +77,7 @@ const Sidebar: React.FC = () => {
         <li key={currentPath} className="sidebar-item">
           <div
             ref={buttonRef}
-            className={` ${isCurrentPath ? "menu-item-active" : "menu-item"} level-${level}`}
+            className={` ${isCurrentPath ? "menu-item-active" : "menu-item"} item-level-${level}`}
             onClick={item.children?.length ? openSubmenu : navigateOnClick}
             style={{
               transition: "0.3s",
@@ -95,6 +95,8 @@ const Sidebar: React.FC = () => {
                   : { marginLeft: 200 }
               }
             >
+              <div className="submenu-title">{item.label}</div>
+
               {renderItems(item.children, level + 1, currentPath)}
             </ul>
           )}

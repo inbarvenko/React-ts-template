@@ -115,6 +115,10 @@ export const CalendarWrapper = styled.div<{ themelocal: ThemeEnum }>`
     }
   }
 
+  .fc-multimonth-title {
+    color: ${colors["light"].color_text};
+  }
+
   .fc-button-group {
     display: flex;
     flex-direction: row;
@@ -139,57 +143,53 @@ export const CalendarWrapper = styled.div<{ themelocal: ThemeEnum }>`
           0 1px 1px 1px rgba(60, 64, 67, 0.1);
       }
     }
+  }
 
-    .arrow {
-      vertical-align: middle;
+  .fc-addEventButton-button {
+    height: 35px;
+    padding: 0 10px;
+
+    border-radius: 50px;
+
+    box-shadow:
+      0 1px 2px 0 rgba(60, 64, 67, 0.3),
+      0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  }
+
+  .button {
+    color: black;
+
+    &:focus,
+    &:focus-visible {
+      outline: none;
     }
 
-    .fc-addEventButton-button {
-      height: 35px;
-      padding: 10px;
-
-      border-radius: 50px;
-
-      box-shadow:
-        0 1px 2px 0 rgba(60, 64, 67, 0.3),
-        0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    &:hover {
+      background-color: #f9f9f9;
     }
 
-    .button {
-      color: black;
-
-      &:focus,
-      &:focus-visible {
-        outline: none;
-      }
-
-      &:hover {
-        background-color: #f9f9f9;
-      }
-
-      &:active {
-        background-color: #f1f1f1;
-      }
+    &:active {
+      background-color: #f1f1f1;
     }
+  }
 
-    &-add {
-      height: 35px;
-      padding: 10px;
+  &-add {
+    height: 35px;
+    padding: 10px;
 
-      border-radius: 50px;
+    border-radius: 50px;
 
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 
-      box-shadow:
-        0 1px 2px 0 rgba(60, 64, 67, 0.3),
-        0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    box-shadow:
+      0 1px 2px 0 rgba(60, 64, 67, 0.3),
+      0 1px 3px 1px rgba(60, 64, 67, 0.15);
 
-      font-size: 14px;
-    }
+    font-size: 14px;
   }
 
   .form {
