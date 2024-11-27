@@ -6,13 +6,18 @@ import {
   BiHelpCircle,
   BiHomeAlt2,
 } from "react-icons/bi";
-import { SiderItemType } from "../types/types";
+import { SiderItemType } from "../widgets/Sidebar/types/types";
+import TablePage from "../pages/TablePage/TablePage";
+import EmptyPage from "../pages/EmptyPage/EmptyPage";
+import CalendarPage from "../pages/CalendarPage/CalendarPage";
+import HelpPage from "../pages/HelpPage/HelpPage";
 
-export const sidersTitles: SiderItemType[] = [
+export const routersData: SiderItemType[] = [
   {
     label: "Главная страница",
     path: "/",
     icon: <BiHomeAlt2 size={20} />,
+    element: <TablePage />,
   },
   {
     label: "Все документы",
@@ -21,22 +26,27 @@ export const sidersTitles: SiderItemType[] = [
       {
         label: "Отчетные документы",
         path: "/report",
+        element: <EmptyPage />,
       },
       {
         label: "Награждения",
         path: "/reward",
+        element: <EmptyPage />,
       },
       {
         label: "Олимпиады",
         path: "/olympiad",
+        element: <EmptyPage />,
       },
       {
         label: "Требования",
         path: "/application",
+        element: <EmptyPage />,
       },
       {
         label: "Конфиденциальность",
         path: "/privacy",
+        element: <EmptyPage />,
       },
       {
         label: "Регламенты",
@@ -61,6 +71,7 @@ export const sidersTitles: SiderItemType[] = [
       {
         label: "Дополнительно",
         path: "/additional",
+        element: <EmptyPage />,
       },
     ],
   },
@@ -68,20 +79,24 @@ export const sidersTitles: SiderItemType[] = [
     label: "Структура организации",
     path: "/structure",
     icon: <BiGitRepoForked size={20} />,
+    element: <EmptyPage />,
   },
   {
     label: "Формы",
     path: "/forms",
     icon: <BiFolder size={20} />,
+    element: <EmptyPage />,
   },
   {
     label: "Календарь",
     path: "/calendar",
     icon: <BiCalendarAlt size={20} />,
+    element: <CalendarPage />,
   },
   {
     label: "Помощь",
     path: "/help",
     icon: <BiHelpCircle size={20} />,
+    element: <HelpPage />,
   },
 ];

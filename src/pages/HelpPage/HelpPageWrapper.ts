@@ -37,8 +37,30 @@ const HelpPageWrapper = styled.div`
     gap: 10px;
   }
 
-  .li {
+  .list {
     font-family: "HeliosCondC";
+    margin: 0;
+    padding: 0 0 0 25px;
+
+    &-item {
+      font-size: 14px;
+      color: ${colors["light"].color_text};
+
+      a {
+        color: ${colors["light"].links};
+      }
+    }
+
+    &-icon {
+      padding-right: 5px;
+      align-items: center;
+      vertical-align: text-top;
+    }
+
+    &-custom {
+      list-style: none;
+      padding: 0 0 0 10px;
+    }
   }
 `;
 

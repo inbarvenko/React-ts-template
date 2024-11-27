@@ -3,77 +3,150 @@ import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the 
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the Data Grid
 
 import React, { useMemo, useState } from "react";
-import { ColDef } from "ag-grid-community";
+import { ColDef, ModuleRegistry } from "ag-grid-community";
 import TablePageWrapper from "./TablePageWrapper";
 import Layout from "../../shared/ui/Layout/Layout";
 import { AG_GRID_LOCALE_RU } from "../../widgets/Table/model/locale";
-import { BiEditAlt } from "react-icons/bi";
-// import { themeQuartz } from "@ag-grid-community/theming";
+import { BiBarChartSquare, BiEditAlt } from "react-icons/bi";
 
-// const myTheme = themeQuartz.withParams({
-//   borderColor: "#BABFC7",
-//   borderRadius: "4px",
-//   browserColorScheme: "light",
-//   columnBorder: false,
-//   foregroundColor: "#282828",
-//   headerBackgroundColor: "#EFEFF0",
-//   headerFontFamily: "HeliosCondC",
-//   fontFamily: "HeliosCondC",
-//   headerFontSize: 14,
-//   headerFontWeight: 500,
-//   sidePanelBorder: true,
-//   spacing: "10px",
-//   wrapperBorderRadius: "0px",
-// });
+import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
+import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
+import { GridChartsModule } from "@ag-grid-enterprise/charts-enterprise";
+import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
+import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+import { RichSelectModule } from "@ag-grid-enterprise/rich-select";
+import { SparklinesModule } from "@ag-grid-enterprise/sparklines";
+
+import { tableData } from "./table.data";
+import { StatusCellRenderer } from "../../shared/ui/cell-renderers/StatusCellRender/StatusCellRender";
+
+//TODO: Add License key for AG Grid
+ModuleRegistry.registerModules([
+  ExcelExportModule,
+  FiltersToolPanelModule,
+  GridChartsModule,
+  RangeSelectionModule,
+  RowGroupingModule,
+  SetFilterModule,
+  RichSelectModule,
+  SparklinesModule,
+]);
 
 const TablePage: React.FC = () => {
-  // to use myTheme in an application, pass it to the theme grid option
+  const confidentialityStatus = ["Имеется", "Отсутствует"];
+  const [editing, setEditing] = useState<boolean>(false);
 
-  // Row Data: The data to be displayed.
-  const [rowData, setRowData] = useState([
-    { make: "Tesla", model: "Model Y", price: 64950, electric: true },
-    { make: "Ford", model: "F-Series", price: 33850, electric: false },
-    { make: "Toyota", model: "Corolla", price: 29600, electric: false },
-  ]);
+  const editColumnConfig = useMemo<ColDef[]>(
+    () => [
+      {
+        field: "edit",
+        floatingFilter: false,
+        filter: false,
+        sortable: false,
+        editable: false,
+        lockPosition: "right",
+        width: 50,
+        maxWidth: 50,
+        cellStyle: {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        },
+        headerComponent: () => (
+          <div onClick={() => console.log("header click")}>
+            <BiBarChartSquare
+              style={{ verticalAlign: "middle", cursor: "pointer" }}
+              size={20}
+              color="#808080"
+            />
+          </div>
+        ),
+        cellRenderer: () => (
+          <div onClick={() => console.log("click")}>
+            <BiEditAlt
+              style={{ verticalAlign: "middle", cursor: "pointer" }}
+              size={20}
+            />
+          </div>
+        ),
+      },
+    ],
+    [],
+  );
 
-  // Column Definitions: Defines the columns to be displayed.
+  const [rowData, setRowData] = useState(tableData);
   const [colDefs, setColDefs] = useState<ColDef[]>([
     {
-      field: "make",
+      headerName: "ФИО",
+      field: "name",
     },
     {
-      field: "model",
-    },
-    {
-      field: "price",
-    },
-    {
-      field: "electric",
-    },
-    {
-      headerName: "",
-      field: "edit",
+      headerName: "Подразделение",
+      field: "division",
 
-      floatingFilter: false,
-      filter: false,
-      sortable: false,
-      width: 50,
-      initialWidth: 50,
-      maxWidth: 50,
-      cellRenderer: () => (
-        <div>
-          <BiEditAlt
-            style={{ verticalAlign: "middle", cursor: "pointer" }}
-            size={20}
-          />
-        </div>
-      ),
+      cellStyle: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      },
     },
+    {
+      headerName: "Должность",
+      field: "position",
+    },
+    {
+      headerName: "Загруженность",
+      field: "load",
+      editable: false,
+      cellRenderer: "agSparklineCellRenderer",
+      cellRendererParams: {
+        sparklineOptions: {
+          line: {
+            strokeWidth: 1.5,
+          },
+        },
+      },
+    },
+    {
+      headerName: "Наличие договора о конфиденциальности",
+      field: "confidentiality",
+
+      valueFormatter: (p) => {
+        if (typeof p.value !== "boolean") return p.value;
+        return p.value ? "Имеется" : "Отсутствует";
+      },
+      cellRenderer: StatusCellRenderer,
+      cellEditor: "agRichSelectCellEditor",
+      maxWidth: 130,
+      cellEditorParams: {
+        values: confidentialityStatus,
+      },
+      cellStyle: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      },
+    },
+    {
+      headerName: "Линейный руководитель",
+      field: "leader",
+    },
+    {
+      headerName: "Номер рабочего телефона",
+      field: "phone",
+
+      cellStyle: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      },
+    },
+    ...editColumnConfig,
   ]);
 
-  const pagination = true;
-  const paginationPageSize = 500;
-  const paginationPageSizeSelector = [200, 500, 1000];
+  const paginationPageSize = 25;
+  const paginationPageSizeSelector = [25, 50, 100];
 
   const defaultColDef = useMemo<ColDef>(
     () => ({
@@ -93,18 +166,23 @@ const TablePage: React.FC = () => {
         title="Сводная таблица по работникам Общества 2024"
         headerClassName="header-style"
         bodyClassName="body-style"
+        onSettingsClick={() => {
+          console.log("click");
+          setEditing(!editing);
+        }}
       >
         <div
           className="ag-theme-quartz" // applying the Data Grid theme
           style={{ height: "100%" }} // the Data Grid will fill the size of the parent container
         >
           <AgGridReact
-            // theme={myTheme}
+            pagination
+            enableCharts
+            suppressClickEdit={editing}
             localeText={AG_GRID_LOCALE_RU}
             defaultColDef={defaultColDef}
             rowData={rowData}
             columnDefs={colDefs}
-            pagination={pagination}
             paginationPageSize={paginationPageSize}
             paginationPageSizeSelector={paginationPageSizeSelector}
           />

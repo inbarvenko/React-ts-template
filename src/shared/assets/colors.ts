@@ -23,7 +23,7 @@ export const colors = {
     sidebar_gradient_lvl_3:
       "linear-gradient(180deg, rgb(123, 174, 208) 40%, rgb(0, 74, 119))",
     color_text: "#282828",
-    none: "none",
+    none: "rgba(0,0,0,0)",
     border_color: "#BABFC7",
     links: "#2196F3",
 
@@ -32,6 +32,7 @@ export const colors = {
 
     // Кастомные цвета для таблицы
     table_title_background: "#EFEFF0",
+    tick_true_color: "rgb(70, 227, 114, 0.4)",
   },
   light: {
     color_main_white_0: "#FFFFFF",
@@ -66,5 +67,6 @@ export const colors = {
 
     // Кастомные цвета для таблицы
     table_title_background: "#EFEFF0",
+    tick_true_color: "rgb(70, 227, 114, 0.4)",
   },
 };

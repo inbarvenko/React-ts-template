@@ -2,21 +2,30 @@ import styled from "styled-components";
 import { colors } from "../../assets/colors";
 
 const LayoutWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  max-width: calc(100% - 40px);
+  flex: 1;
+  /* Закоммитить, если верхнее меню */
+  /* height: 100vh; */
+  overflow: auto;
 
-  margin: 20px;
-  min-height: calc(100vh - 40px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  box-sizing: border-box;
+  background-color: #d3ebf8;
 
-  background-color: #fcfcfc;
-  border-radius: 16px;
-  border: 1px solid ${colors["light"].border_color};
+  .layout {
+    position: relative;
+    width: 100%;
+    max-width: calc(100% - 40px);
+
+    margin: 20px;
+    min-height: calc(100vh - 40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    background-color: #fcfcfc;
+    border-radius: 16px;
+    border: 1px solid ${colors["light"].border_color};
+  }
 
   .header {
     width: 100%;
@@ -47,6 +56,8 @@ const LayoutWrapper = styled.div`
   .content {
     width: 100%;
     flex: 1;
+
+    display: grid;
   }
 `;
 

@@ -1,14 +1,8 @@
 import styled from "styled-components";
 
 export const CalendarPageWrapper = styled.div`
-  .Adapter {
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    font-family: "HeliosCondC";
-  }
+  height: 100vh;
+  overflow: auto;
 
   .rbc-month-view {
     padding: 10px;
@@ -32,18 +26,6 @@ export const CalendarPageWrapper = styled.div`
   .rbc-show-more {
     border-radius: 2px;
     border-color: #85c4ff !important;
-  }
-
-  .close {
-    display: none;
-  }
-
-  .bubble-1 {
-    background-color: #5f6770 !important;
-  }
-
-  .bubble-2 {
-    background-color: #ff4d07 !important;
   }
 
   .rbc-selected {

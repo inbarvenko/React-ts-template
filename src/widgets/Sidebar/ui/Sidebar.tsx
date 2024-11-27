@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Logo from "../../../shared/assets/svg/head-novator.svg";
-import { sidersTitles } from "../constants/constants";
+import { routersData } from "../../../app/data";
 import { useLocation, useNavigate } from "react-router-dom";
 import { BiChevronsRight, BiUser } from "react-icons/bi";
 import { SiderItemType } from "../types/types";
@@ -113,7 +113,7 @@ const Sidebar: React.FC = () => {
       <div className="content">
         <img src={Logo} className="logo" />
 
-        <ul className="sidebar">{renderItems(sidersTitles)}</ul>
+        <ul className="sidebar">{renderItems(routersData)}</ul>
       </div>
 
       <div className="footer">
