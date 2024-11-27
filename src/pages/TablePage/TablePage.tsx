@@ -1,25 +1,24 @@
-import { AgGridReact } from "ag-grid-react"; // React Data Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the Data Grid
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the Data Grid
 
-import React, { useMemo, useState } from "react";
-import { ColDef, ModuleRegistry } from "ag-grid-community";
-import TablePageWrapper from "./TablePageWrapper";
-import Layout from "../../shared/ui/Layout/Layout";
-import { AG_GRID_LOCALE_RU } from "../../widgets/Table/model/locale";
-import { BiBarChartSquare, BiEditAlt } from "react-icons/bi";
-
+import { GridChartsModule } from "@ag-grid-enterprise/charts-enterprise";
 import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
 import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { GridChartsModule } from "@ag-grid-enterprise/charts-enterprise";
 import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
+import { RichSelectModule } from "@ag-grid-enterprise/rich-select";
 import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
 import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { RichSelectModule } from "@ag-grid-enterprise/rich-select";
 import { SparklinesModule } from "@ag-grid-enterprise/sparklines";
+import { ColDef, ModuleRegistry } from "ag-grid-community";
+import { AgGridReact } from "ag-grid-react"; // React Data Grid Component
+import React, { useMemo, useState } from "react";
+import { BiBarChartSquare, BiEditAlt } from "react-icons/bi";
 
-import { tableData } from "./table.data";
 import { StatusCellRenderer } from "../../shared/ui/cell-renderers/StatusCellRender/StatusCellRender";
+import Layout from "../../shared/ui/Layout/Layout";
+import { AG_GRID_LOCALE_RU } from "../../widgets/Table/model/locale";
+import { tableData } from "./table.data";
+import TablePageWrapper from "./TablePageWrapper";
 
 //TODO: Add License key for AG Grid
 ModuleRegistry.registerModules([

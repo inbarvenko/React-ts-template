@@ -1,14 +1,13 @@
 import React from "react";
-
-import LayoutWrapper from "./LayoutWrapper";
-import { BiCog } from "react-icons/bi";
-import { colors } from "../../assets/colors";
 import { Helmet } from "react-helmet";
+import { BiCog } from "react-icons/bi";
+
+import { colors } from "../../assets/colors";
+import LayoutWrapper from "./LayoutWrapper";
 
 type Props = {
   title?: string;
   settings?: boolean;
-  // backgroundColor?: "grey" | "light-blue";
   headerClassName?: string;
   bodyClassName?: string;
   onSettingsClick?: () => void;
@@ -18,7 +17,6 @@ type Props = {
 const Layout: React.FC<Props> = ({
   title,
   settings,
-  // backgroundColor,
   headerClassName,
   bodyClassName,
   onSettingsClick,

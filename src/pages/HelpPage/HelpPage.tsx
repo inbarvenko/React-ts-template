@@ -1,7 +1,8 @@
 import React from "react";
-import HelpPageWrapper from "./HelpPageWrapper";
-import Layout from "../../shared/ui/Layout/Layout";
 import { BiPhone } from "react-icons/bi";
+
+import Layout from "../../shared/ui/Layout/Layout";
+import HelpPageWrapper from "./HelpPageWrapper";
 
 const HelpPage: React.FC = () => {
   console.log("helps");

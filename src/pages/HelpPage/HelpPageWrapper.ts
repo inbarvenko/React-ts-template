@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { colors } from "../../shared/assets/colors";
 
 const HelpPageWrapper = styled.div`

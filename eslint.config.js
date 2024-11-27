@@ -8,10 +8,13 @@ import eslintReactRefresh from "eslint-plugin-react-refresh";
 import prettierPlugin from "eslint-plugin-prettier";
 import eslintConfigPrettier from "eslint-config-prettier";
 import eslintAutofix from "eslint-plugin-autofix";
+import eslintAsyncAwait from "eslint-plugin-async-await";
+import eslintPluginUnicorn from "eslint-plugin-unicorn";
+import eslintPluginSimpleImportSort from "eslint-plugin-simple-import-sort";
+import eslintSonarjs from "eslint-plugin-sonarjs";
 
 // js airbnb config
 // ts and js должны быть одинаковые для style-coding
-// 502, 404, 403 (forbidden), 401(?) - картинки, компонент Result (antd)
 
 /** @type {import("eslint").Linter.Config[]} */
 export default tseslint.config(
@@ -35,41 +38,27 @@ export default tseslint.config(
       react: eslintReact,
       "react-refresh": eslintReactRefresh,
       autofix: eslintAutofix,
-      // + async await plugin
-      // + unicorn plugin
-      // + sonarjs plugin
-
-      // "import/order": [
-      //   "error",
-      //   {
-      //     groups: [
-      //       "builtin",
-      //       "external",
-      //       "parent",
-      //       "sibling",
-      //       "index",
-      //       "object",
-      //       "type",
-      //     ],
-      //     pathGroups: [
-      //       {
-      //         pattern: "@/**/**",
-      //         group: "parent",
-      //         position: "before",
-      //       },
-      //     ],
-      //     alphabetize: { order: "asc" },
-      //   },
-      // ],
-
+      "async-await": eslintAsyncAwait,
+      unicorn: eslintPluginUnicorn,
+      "simple-import-sort": eslintPluginSimpleImportSort,
+      sonarjs: eslintSonarjs,
       prettier: prettierPlugin,
     },
   },
   {
     rules: {
       ...eslintConfigPrettier.rules,
+
+      "unicorn/better-regex": "error",
+      "unicorn/consistent-function-scoping": "error",
+
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error",
+
       "prefer-const": "error",
       "no-undef": "error",
+      "no-instanceof-array": "error",
+
       "react/self-closing-comp": ["error", { component: true, html: true }],
       "arrow-body-style": ["error", "as-needed"],
       "sort-imports": [

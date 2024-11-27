@@ -1,8 +1,9 @@
 import { DatePicker, Input } from "antd";
-import { Modal, ModalProps } from "../../../shared/ui/Modal";
-import { ModalEventType } from "../types/eventTypes";
 import dayjs from "dayjs";
 import { useState } from "react";
+
+import { Modal, ModalProps } from "../../../shared/ui/Modal";
+import { ModalEventType } from "../types/eventTypes";
 
 type Props = ModalProps & {
   event: ModalEventType;

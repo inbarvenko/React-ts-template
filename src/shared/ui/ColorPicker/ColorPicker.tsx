@@ -1,7 +1,8 @@
-import React from "react";
 import { ColorPicker as AntdColorPicker, Col, Divider, Row } from "antd";
-import { presets } from "../../constants/presets";
 import { ColorPickerProps } from "antd/lib";
+import React from "react";
+
+import { presets } from "../../constants/presets";
 
 const ColorPicker: React.FC = () => {
   const customPanelRender: ColorPickerProps["panelRender"] = (

@@ -6,11 +6,12 @@ import {
   BiHelpCircle,
   BiHomeAlt2,
 } from "react-icons/bi";
-import { SiderItemType } from "../widgets/Sidebar/types/types";
-import TablePage from "../pages/TablePage/TablePage";
-import EmptyPage from "../pages/EmptyPage/EmptyPage";
+
 import CalendarPage from "../pages/CalendarPage/CalendarPage";
+import EmptyPage from "../pages/EmptyPage/EmptyPage";
 import HelpPage from "../pages/HelpPage/HelpPage";
+import TablePage from "../pages/TablePage/TablePage";
+import { SiderItemType } from "../widgets/Sidebar/types/types";
 
 export const routersData: SiderItemType[] = [
   {

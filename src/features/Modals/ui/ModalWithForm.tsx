@@ -1,11 +1,10 @@
 import { Form } from "antd";
-import {Modal, ModalProps } from "../../../shared/ui/Modal";
 
-type Props = ModalProps & {
- 
-};
+import { Modal, ModalProps } from "../../../shared/ui/Modal";
 
-const ModalWithForm = ({children, ...props}: Props) => {
+type Props = ModalProps & {};
+
+const ModalWithForm = ({ children, ...props }: Props) => {
   const [form] = Form.useForm();
 
   return (

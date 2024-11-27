@@ -1,6 +1,7 @@
 import React from "react";
-import { Sidebar } from "../../widgets/Sidebar";
 import { Outlet } from "react-router-dom";
+
+import { Sidebar } from "../../widgets/Sidebar";
 import { ContentWrapper } from "./ContentWrapper";
 
 const Content: React.FC = () => {

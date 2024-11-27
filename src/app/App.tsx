@@ -1,6 +1,8 @@
 import "../shared/assets/fonts/fonts.css";
 import "./App.css";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import Content from "./Content/Content";
 import { routersData } from "./data";
 

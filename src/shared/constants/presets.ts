@@ -24,4 +24,4 @@ const presets = [
 const defaultColor = colors["light"].color_main_blue_50;
 const noColor = colors["light"].none;
 
-export { presets, defaultColor, noColor };
+export { defaultColor, noColor, presets };
