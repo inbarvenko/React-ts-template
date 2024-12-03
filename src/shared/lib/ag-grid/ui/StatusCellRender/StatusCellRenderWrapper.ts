@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { colors } from "../../../assets/colors";
+import { colors } from "../../../../assets/colors";
 
 const StatusCellRenderWrapper = styled.div`
   .tag {

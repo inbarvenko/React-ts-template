@@ -1,7 +1,7 @@
 import { CustomCellRendererProps } from "ag-grid-react";
 import React from "react";
 
-import { Tick } from "../../../assets/svg";
+import { Tick } from "../../../../assets/svg";
 import StatusCellRenderWrapper from "./StatusCellRenderWrapper";
 
 export const StatusCellRenderer: React.FC<CustomCellRendererProps> = ({

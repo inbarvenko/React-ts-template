@@ -16,7 +16,7 @@ import {
 } from "@fullcalendar/core/index.js";
 import { ThemeEnum } from "../../../shared/constants/theme";
 import moment from "moment";
-import { ModalEventType } from "../../../features/Modals/types/eventTypes";
+import { ModalEventType } from "../../../features/Modals/types/types";
 import { EventType } from "../types/types";
 import dayjs from "dayjs";
 import ColorPicker from "../../../shared/ui/ColorPicker/ColorPicker";
@@ -121,7 +121,6 @@ const Calendar: React.FC<Props> = ({ schedule }: Props) => {
       customButtons: {
         //Назавания кнопок на панели
         addEventButton: {
-          // icon: () => <BiPlusCircle />,
           text: "Создать",
           click: openAddModalWithButton,
         },
@@ -178,7 +177,7 @@ const Calendar: React.FC<Props> = ({ schedule }: Props) => {
         },
       },
       slotLabelFormat: {
-        //делаю время для слотов в левой стороне представления по дням/неделям
+        //время для слотов в левой стороне представления по дням/неделям
         hour: "2-digit",
         minute: "2-digit",
         omitZeroMinute: false,

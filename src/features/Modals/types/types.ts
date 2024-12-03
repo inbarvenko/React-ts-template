@@ -18,3 +18,9 @@ export type ModalProps = {
   onDelete?: () => void;
   onEdit?: () => void;
 };
+
+export type ModalEventType = {
+  eventTitle: string;
+  eventStart: string;
+  eventEnd: string;
+};

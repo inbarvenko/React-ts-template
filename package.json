@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ag-grid-community/core": "^32.3.3",
     "@ag-grid-community/theming": "^32.2.2",
     "@consta/react-big-calendar-adapter": "^0.2.3",
     "@consta/uikit": "^5.9.2",
@@ -21,7 +22,15 @@
     "@fullcalendar/react": "^6.1.15",
     "@fullcalendar/timegrid": "^6.1.15",
     "@lottiefiles/dotlottie-react": "^0.9.1",
-    "ag-grid-react": "^32.2.2",
+    "@ag-grid-enterprise/charts-enterprise": "^32.3.3",
+    "@ag-grid-enterprise/excel-export": "^32.3.3",
+    "@ag-grid-enterprise/filter-tool-panel": "^32.3.3",
+    "@ag-grid-enterprise/rich-select": "^32.3.3",
+    "@ag-grid-enterprise/row-grouping": "^32.3.3",
+    "@ag-grid-enterprise/set-filter": "^32.3.3",
+    "@ag-grid-enterprise/sparklines": "^32.3.3",
+    "ag-grid-enterprise": "32.3.3",
+    "ag-grid-react": "32.3.3",
     "antd": "^5.21.2",
     "color-convert": "^2.0.1",
     "dayjs": "^1.11.13",
@@ -37,13 +46,6 @@
     "styled-components": "^6.1.13"
   },
   "devDependencies": {
-    "@ag-grid-enterprise/charts-enterprise": "^32.3.3",
-    "@ag-grid-enterprise/excel-export": "^32.3.3",
-    "@ag-grid-enterprise/filter-tool-panel": "^32.3.3",
-    "@ag-grid-enterprise/rich-select": "^32.3.3",
-    "@ag-grid-enterprise/row-grouping": "^32.3.3",
-    "@ag-grid-enterprise/set-filter": "^32.3.3",
-    "@ag-grid-enterprise/sparklines": "^32.3.3",
     "@eslint/js": "^9.12.0",
     "@types/color-convert": "^2.0.4",
     "@types/react": "^18.3.3",

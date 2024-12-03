@@ -1,6 +1,6 @@
 import { Form } from "antd";
-
-import { Modal, ModalProps } from "../../../shared/ui/Modal";
+import Modal from "./Modal";
+import { ModalProps } from "../types/types";
 
 type Props = ModalProps & {};
 

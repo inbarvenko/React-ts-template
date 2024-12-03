@@ -2,7 +2,11 @@ import styled from "styled-components";
 import { colors } from "../../../shared/assets/colors";
 import { ThemeEnum } from "../../../shared/constants/theme";
 
-export const CalendarWrapper = styled.div<{ themelocal: ThemeEnum }>`
+type Props = { themelocal: ThemeEnum };
+
+export const CalendarWrapper = styled.div.withConfig({
+  shouldForwardProp: (prop) => !["themelocal"].includes(prop),
+})<Props>`
   font-family: "HeliosCondC";
 
   margin: 0 20px 20px 20px;

@@ -19,8 +19,8 @@
 // export { default as Breadcrumb } from "antd/lib/breadcrumb";
 // export type { BreadcrumbItemProps, BreadcrumbProps } from "antd/lib/breadcrumb";
 
-export { default as Button } from "../../ui/Button/Button";
-export type { ButtonProps } from "antd/lib/button";
+// export { default as Button } from "../../ui/Button/Button";
+// export type { ButtonProps } from "antd/lib/button";
 
 // export { default as Calendar } from "antd/lib/calendar";
 // export type { CalendarProps } from "antd/lib/calendar";

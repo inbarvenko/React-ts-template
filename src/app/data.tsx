@@ -12,6 +12,7 @@ import EmptyPage from "../pages/EmptyPage/EmptyPage";
 import HelpPage from "../pages/HelpPage/HelpPage";
 import TablePage from "../pages/TablePage/TablePage";
 import { SiderItemType } from "../widgets/Sidebar/types/types";
+import FormPage from "../pages/FormPage/FormPage";
 
 export const routersData: SiderItemType[] = [
   {
@@ -86,7 +87,7 @@ export const routersData: SiderItemType[] = [
     label: "Формы",
     path: "/forms",
     icon: <BiFolder size={20} />,
-    element: <EmptyPage />,
+    element: <FormPage />,
   },
   {
     label: "Календарь",

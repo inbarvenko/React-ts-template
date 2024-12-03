@@ -6,12 +6,17 @@ import ButtonWrapper from "./ButtonWrapper";
 type Props = ButtonProps & {
   title: string;
   onClick: () => void;
+  wrapperStyle?: string;
 };
 
-const ButtonLocal: React.FC<Props> = ({ title, ...props }: Props) => (
-  <ButtonWrapper themеtype={ThemeEnum.light}>
+const ButtonLocal: React.FC<Props> = ({
+  title,
+  wrapperStyle,
+  ...props
+}: Props) => (
+  <ButtonWrapper themеlocal={ThemeEnum.light} className={wrapperStyle}>
     <Button {...props}>{title}</Button>
   </ButtonWrapper>
 );
 
-export default ButtonLocal;
+export { ButtonLocal as Button };

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { BiX } from "react-icons/bi";
 
-import { Button } from "../../../lib/antd";
 import { ButtonLoadingType, ButtonType, ModalProps } from "../types/types";
 import ModalWrapper from "./ModalWrapper";
+import { Button } from "../../../shared/ui/Button/Button";
 
 const Modal: React.FC<ModalProps> = ({
   editable,

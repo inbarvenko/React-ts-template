@@ -2,10 +2,14 @@ import styled, { css } from "styled-components";
 import { colors } from "../../../shared/assets/colors";
 import { ThemeEnum } from "../../../shared/constants/theme";
 
-const SidebarWrapper = styled.div<{
+type Props = {
   collapsed: boolean;
   themelocal: ThemeEnum;
-}>`
+};
+
+const SidebarWrapper = styled.div.withConfig({
+  shouldForwardProp: (prop) => !["collapsed", "themelocal"].includes(prop),
+})<Props>`
   min-width: ${(p) => (p.collapsed ? "75px" : "200px")};
   max-width: ${(p) => (p.collapsed ? "75px" : "200px")};
 

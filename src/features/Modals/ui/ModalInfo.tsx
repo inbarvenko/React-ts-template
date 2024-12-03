@@ -1,4 +1,5 @@
-import { Modal, ModalProps } from "../../../shared/ui/Modal";
+import { ModalProps } from "../types/types";
+import Modal from "./Modal";
 
 type Props = ModalProps & {
   title: string;
