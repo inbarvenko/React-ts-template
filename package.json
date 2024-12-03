@@ -21,7 +21,6 @@
     "@fullcalendar/multimonth": "^6.1.15",
     "@fullcalendar/react": "^6.1.15",
     "@fullcalendar/timegrid": "^6.1.15",
-    "@lottiefiles/dotlottie-react": "^0.9.1",
     "@ag-grid-enterprise/charts-enterprise": "^32.3.3",
     "@ag-grid-enterprise/excel-export": "^32.3.3",
     "@ag-grid-enterprise/filter-tool-panel": "^32.3.3",
@@ -34,9 +33,11 @@
     "antd": "^5.21.2",
     "color-convert": "^2.0.1",
     "dayjs": "^1.11.13",
+    
     "eslint-plugin-async-await": "^0.0.0",
     "eslint-plugin-unicorn": "^56.0.1",
     "less-loader": "^12.2.0",
+
     "lottie-react": "^2.4.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -47,7 +48,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",
-    "@types/color-convert": "^2.0.4",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-helmet": "^6.1.11",
