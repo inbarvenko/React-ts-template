@@ -24,6 +24,7 @@ export const routersData: SiderItemType[] = [
   {
     label: "Все документы",
     icon: <BiFileBlank size={20} />,
+    path: "/documents",
     children: [
       {
         label: "Отчетные документы",
@@ -52,6 +53,7 @@ export const routersData: SiderItemType[] = [
       },
       {
         label: "Регламенты",
+        path: "/reglaments",
         children: [
           {
             label: "Регистрации и использ. мобильных устройств",

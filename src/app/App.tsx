@@ -30,7 +30,7 @@ export default function App() {
                   {item.children?.map((child, indexChild) => (
                     <Route
                       key={`${child.path}-${indexChild}`}
-                      path={child.path}
+                      path={`${item.path}${child.path}`}
                       element={child.element}
                     />
                   ))}

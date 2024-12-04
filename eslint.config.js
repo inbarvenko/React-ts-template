@@ -13,7 +13,6 @@ import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginSimpleImportSort from "eslint-plugin-simple-import-sort";
 import eslintSonarjs from "eslint-plugin-sonarjs";
 
-// js airbnb config
 // ts and js должны быть одинаковые для style-coding
 
 /** @type {import("eslint").Linter.Config[]} */
