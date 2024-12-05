@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Logo from "../../../shared/assets/svg/head-novator.svg";
 import { routersData } from "../../../app/data";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -13,6 +13,25 @@ const Sidebar: React.FC = () => {
   const buttonRef = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
   const localion = useLocation();
+
+  const openLocationSubmenus = useCallback(() => {
+    let previousPath = "";
+
+    const locationSplit = localion.pathname
+      .split("/")
+      .filter((item) => item.length);
+
+    locationSplit.pop();
+
+    const locationPaths = locationSplit.map((item) => {
+      previousPath += "/" + item;
+      return previousPath;
+    });
+
+    console.log("locationPaths", locationPaths);
+
+    locationPaths.forEach((item, index) => toggleSubmenu(item, index));
+  }, [localion]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -35,15 +54,27 @@ const Sidebar: React.FC = () => {
     setOpenSubmenus([]);
   };
 
-  const toggleSubmenu = (path: string) => {
+  const toggleSubmenu = (path: string, level: number = 0) => {
     const isOpen = openSubmenus.includes(path);
 
-    if (isOpen) {
-      setOpenSubmenus(openSubmenus.filter((item) => item !== path));
+    if (level === 0) {
+      if (isOpen) {
+        setOpenSubmenus([]);
+        return;
+      }
+
+      setOpenSubmenus([path]);
       return;
     }
 
-    setOpenSubmenus([...openSubmenus, path]);
+    if (isOpen) {
+      setOpenSubmenus((prevSubmenus) =>
+        prevSubmenus.filter((item) => !item.startsWith(path)),
+      );
+      return;
+    }
+
+    setOpenSubmenus((prevSubmenus) => [...prevSubmenus, path]);
   };
 
   const onProfileClick = () => {
@@ -53,25 +84,34 @@ const Sidebar: React.FC = () => {
   const renderItems = (items: SiderItemType[], level = 0, parentPath = "") =>
     items.map((item) => {
       const currentPath = `${parentPath}${item.path}`;
-      const isOpen = openSubmenus.includes(currentPath || "");
-      const context = minimize ? item.icon : item.label;
-
-      const openSubmenu = (e: React.MouseEvent<HTMLDivElement>) => {
-        e.stopPropagation();
-
-        setMinimize(false);
-        toggleSubmenu(currentPath);
-      };
-
-      const navigateOnClick = () => {
-        navigate(currentPath || "/");
-        setOpenSubmenus([]);
-      };
-
+      const isOpen = openSubmenus.includes(currentPath);
       const isCurrentPath =
         ((!openSubmenus.length || level !== 0) &&
           localion.pathname === currentPath) ||
         isOpen;
+      const context = minimize ? item.icon : item.label;
+
+      const openSubmenu = (e: React.MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation();
+        setMinimize(false);
+
+        if (
+          localion.pathname !== "/" &&
+          localion.pathname.startsWith(currentPath)
+        ) {
+          openLocationSubmenus();
+          return;
+        }
+
+        toggleSubmenu(currentPath, level);
+      };
+
+      const navigateOnClick = () => {
+        if (location.pathname === currentPath) return;
+
+        navigate(currentPath || "/");
+        setOpenSubmenus([]);
+      };
 
       return (
         <li key={currentPath} className="sidebar-item">

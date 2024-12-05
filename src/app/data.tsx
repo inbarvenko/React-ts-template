@@ -58,24 +58,67 @@ export const routersData: SiderItemType[] = [
           {
             label: "Регистрации и использ. мобильных устройств",
             path: "/registration",
+            element: <EmptyPage />,
           },
           {
             label: "Управление доступом",
+            path: "/access",
+            element: <EmptyPage />,
           },
           {
             label: "Сетевой безопасности",
+            path: "/network",
+            element: <EmptyPage />,
           },
           {
             label: "Защиты АВЗ",
+            path: "/avz",
+            element: <EmptyPage />,
           },
           {
             label: "Резервного копирования и восстановления",
+            path: "/reserv",
+            element: <EmptyPage />,
           },
         ],
       },
       {
         label: "Дополнительно",
         path: "/additional",
+        element: <EmptyPage />,
+      },
+    ],
+  },
+  {
+    label: "Другие документы",
+    icon: <BiFileBlank size={20} />,
+    path: "/x-documents",
+    children: [
+      {
+        label: "Отчетные документы",
+        path: "/report",
+        element: <EmptyPage />,
+        children: [
+          {
+            label: "Регистрации и использ. мобильных устройств",
+            path: "/registration",
+            element: <EmptyPage />,
+          },
+          {
+            label: "Управление доступом",
+            path: "/access",
+            element: <EmptyPage />,
+          },
+        ],
+      },
+      {
+        label: "Награждения",
+        path: "/reward",
+        element: <EmptyPage />,
+      },
+      {
+        label: "Олимпиады",
+        path: "/olympiad",
         element: <EmptyPage />,
       },
     ],
