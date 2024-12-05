@@ -57,6 +57,7 @@ export const routersData: SiderItemType[] = [
         children: [
           {
             label: "Регистрации и использ. мобильных устройств",
+            path: "/registration",
           },
           {
             label: "Управление доступом",

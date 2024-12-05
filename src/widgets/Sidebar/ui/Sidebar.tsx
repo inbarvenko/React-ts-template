@@ -53,7 +53,7 @@ const Sidebar: React.FC = () => {
   const renderItems = (items: SiderItemType[], level = 0, parentPath = "") =>
     items.map((item) => {
       const currentPath = `${parentPath}${item.path}`;
-      const isOpen = openSubmenus.includes(currentPath);
+      const isOpen = openSubmenus.includes(currentPath || "");
       const context = minimize ? item.icon : item.label;
 
       const openSubmenu = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -68,7 +68,10 @@ const Sidebar: React.FC = () => {
         setOpenSubmenus([]);
       };
 
-      const isCurrentPath = localion.pathname === currentPath || isOpen;
+      const isCurrentPath =
+        ((!openSubmenus.length || level !== 0) &&
+          localion.pathname === currentPath) ||
+        isOpen;
 
       return (
         <li key={currentPath} className="sidebar-item">
@@ -94,7 +97,7 @@ const Sidebar: React.FC = () => {
             >
               <div className="submenu-title">{item.label}</div>
 
-              {renderItems(item.children, level + 1, item.path)}
+              {renderItems(item.children, level + 1, currentPath)}
             </ul>
           )}
         </li>
