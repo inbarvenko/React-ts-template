@@ -5,16 +5,22 @@ import ButtonWrapper from "./ButtonWrapper";
 
 type Props = ButtonProps & {
   title: string;
+  buttonColor?: string;
   onClick: () => void;
   wrapperStyle?: string;
 };
 
 const ButtonLocal: React.FC<Props> = ({
   title,
+  buttonColor,
   wrapperStyle,
   ...props
 }: Props) => (
-  <ButtonWrapper themеlocal={ThemeEnum.light} className={wrapperStyle}>
+  <ButtonWrapper
+    buttonColor={buttonColor}
+    themеlocal={ThemeEnum.light}
+    className={wrapperStyle}
+  >
     <Button {...props}>{title}</Button>
   </ButtonWrapper>
 );

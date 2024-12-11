@@ -5,7 +5,6 @@ import { Sidebar } from "../../widgets/Sidebar";
 import { ContentWrapper } from "./ContentWrapper";
 
 const Content: React.FC = () => {
-  console.log("main");
   return (
     <ContentWrapper>
       <Sidebar />

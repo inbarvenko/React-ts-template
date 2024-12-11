@@ -2,16 +2,21 @@ import styled from "styled-components";
 
 import { colors } from "../../assets/colors";
 import { ThemeEnum } from "../../constants/theme";
+import { getTextColor } from "../../model/getTextColor";
 
 type Props = {
   themеlocal: ThemeEnum;
+  buttonColor?: string;
 };
 
 const ButtonWrapper = styled.div.withConfig({
-  shouldForwardProp: (prop) => !["themelocal"].includes(prop),
+  shouldForwardProp: (prop) => !["themelocal", "buttonColor"].includes(prop),
 })<Props>`
   .ant-btn {
     font-family: "HeliosCondC";
+
+    background-color: ${(p) => p.buttonColor};
+    color: ${(p) => p.buttonColor && getTextColor(p.buttonColor)};
   }
 
   .ant-btn-color-dangerous {

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { GridChartsModule } from "@ag-grid-enterprise/charts-enterprise";
 import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
@@ -14,13 +14,13 @@ import { BiBarChartSquare, BiEditAlt } from "react-icons/bi";
 import { ColDef } from "ag-grid-enterprise";
 import { AgGridReact, AgGridReactProps } from "ag-grid-react";
 
-import { StatusCellRenderer } from "../../../shared/lib/ag-grid/ui/StatusCellRender/StatusCellRender";
 import { AG_GRID_LOCALE_RU } from "../config/locale";
 import TableWrapper from "./TableWrapper";
 
 type Props = AgGridReactProps & {
   data: any[];
   editing?: boolean;
+  columnDefs: ColDef<any, any>[];
 };
 
 ModuleRegistry.registerModules([
@@ -34,10 +34,13 @@ ModuleRegistry.registerModules([
   SparklinesModule,
 ]);
 
-const Table: React.FC<Props> = ({ data, ...props }: Props) => {
-  const confidentialityStatus = ["Имеется", "Отсутствует"];
+const Table: React.FC<Props> = ({ data, columnDefs, ...props }: Props) => {
   const paginationPageSize = 25;
   const paginationPageSizeSelector = [25, 50, 100];
+
+  useEffect(() => {
+    setRowData(data);
+  }, [data]);
 
   const editColumnConfig = useMemo<ColDef[]>(
     () => [
@@ -78,84 +81,21 @@ const Table: React.FC<Props> = ({ data, ...props }: Props) => {
   );
 
   const [rowData, setRowData] = useState(data);
-  const [colDefs, setColDefs] = useState<ColDef[]>([
-    {
-      headerName: "ФИО",
-      field: "name",
-    },
-    {
-      headerName: "Подразделение",
-      field: "division",
-
-      cellStyle: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      },
-    },
-    {
-      headerName: "Должность",
-      field: "position",
-    },
-    {
-      headerName: "Загруженность",
-      field: "load",
-      editable: false,
-      cellRenderer: "agSparklineCellRenderer",
-      cellRendererParams: {
-        sparklineOptions: {
-          line: {
-            strokeWidth: 1.5,
-          },
-        },
-      },
-    },
-    {
-      headerName: "Наличие договора о конфиденциальности",
-      field: "confidentiality",
-
-      valueFormatter: (p) => {
-        if (typeof p.value !== "boolean") return p.value;
-        return p.value ? "Имеется" : "Отсутствует";
-      },
-      cellRenderer: StatusCellRenderer,
-      cellEditor: "agRichSelectCellEditor",
-      maxWidth: 130,
-      cellEditorParams: {
-        values: confidentialityStatus,
-      },
-      cellStyle: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      },
-    },
-    {
-      headerName: "Линейный руководитель",
-      field: "leader",
-    },
-    {
-      headerName: "Номер рабочего телефона",
-      field: "phone",
-
-      cellStyle: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      },
-    },
-    ...editColumnConfig,
-  ]);
+  const colDefsData = useMemo<ColDef[]>(
+    () => (props.editing ? [...columnDefs, ...editColumnConfig] : columnDefs),
+    [columnDefs, editColumnConfig, props.editing],
+  );
 
   const defaultColDef = useMemo<ColDef>(
-    () => ({
-      filter: true,
-      editable: true,
-      flex: 1,
-      minWidth: 200,
-      floatingFilter: true,
-    }),
-    [],
+    () =>
+      props.defaultColDef || {
+        filter: true,
+        editable: props.editing,
+        flex: 1,
+        minWidth: 200,
+        floatingFilter: true,
+      },
+    [props.editing],
   );
 
   return (
@@ -167,7 +107,7 @@ const Table: React.FC<Props> = ({ data, ...props }: Props) => {
         localeText={AG_GRID_LOCALE_RU}
         defaultColDef={defaultColDef}
         rowData={rowData}
-        columnDefs={colDefs}
+        columnDefs={colDefsData}
         paginationPageSize={paginationPageSize}
         paginationPageSizeSelector={paginationPageSizeSelector}
         {...props}

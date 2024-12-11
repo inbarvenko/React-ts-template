@@ -13,6 +13,7 @@ import HelpPage from "../pages/HelpPage/HelpPage";
 import TablePage from "../pages/TablePage/TablePage";
 import { SiderItemType } from "../widgets/Sidebar/types/types";
 import FormPage from "../pages/FormPage/FormPage";
+import ReportPage from "../pages/ReportPage/ReportPage";
 
 export const routersData: SiderItemType[] = [
   {
@@ -29,7 +30,15 @@ export const routersData: SiderItemType[] = [
       {
         label: "Отчетные документы",
         path: "/report",
-        element: <EmptyPage />,
+        element: <ReportPage />,
+        doNotShowChildrenInSidebar: true,
+        children: [
+          {
+            label: "Новый отчет",
+            path: "/new",
+            element: <FormPage />,
+          },
+        ],
       },
       {
         label: "Награждения",

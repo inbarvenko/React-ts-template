@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { colors } from "../../shared/assets/colors";
 
 const FormPageWrapper = styled.div`
   flex: 1;
@@ -44,8 +43,6 @@ const FormPageWrapper = styled.div`
 
   .button-save {
     margin-top: 40px;
-
-    background: ${colors["light"].color_main_blue_50};
   }
 
   .button-wrapper {

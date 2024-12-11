@@ -28,8 +28,6 @@ const Sidebar: React.FC = () => {
       return previousPath;
     });
 
-    console.log("locationPaths", locationPaths);
-
     locationPaths.forEach((item, index) => toggleSubmenu(item, index));
   }, [localion]);
 
@@ -118,7 +116,11 @@ const Sidebar: React.FC = () => {
           <div
             ref={buttonRef}
             className={` ${isCurrentPath ? "menu-item-active" : "menu-item"} item-level-${level}`}
-            onClick={item.children?.length ? openSubmenu : navigateOnClick}
+            onClick={
+              item.children?.length && !item.doNotShowChildrenInSidebar
+                ? openSubmenu
+                : navigateOnClick
+            }
             style={{
               transition: "0.3s",
             }}
@@ -126,20 +128,22 @@ const Sidebar: React.FC = () => {
             {context}
           </div>
 
-          {item.children?.length && isOpen && (
-            <ul
-              className={`submenu level-${level + 1}`}
-              style={
-                minimize && level === 0
-                  ? { marginLeft: 60 }
-                  : { marginLeft: 200 }
-              }
-            >
-              <div className="submenu-title">{item.label}</div>
+          {item.children?.length &&
+            !item.doNotShowChildrenInSidebar &&
+            isOpen && (
+              <ul
+                className={`submenu level-${level + 1}`}
+                style={
+                  minimize && level === 0
+                    ? { marginLeft: 60 }
+                    : { marginLeft: 200 }
+                }
+              >
+                <div className="submenu-title">{item.label}</div>
 
-              {renderItems(item.children, level + 1, currentPath)}
-            </ul>
-          )}
+                {renderItems(item.children, level + 1, currentPath)}
+              </ul>
+            )}
         </li>
       );
     });

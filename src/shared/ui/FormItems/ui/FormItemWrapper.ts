@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../../../shared/assets/colors";
+import { colors } from "../../../assets/colors";
 
 export const FormItemWrapper = styled.div`
   width: 100%;

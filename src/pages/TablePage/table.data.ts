@@ -1,4 +1,4 @@
-export const tableData = [
+export const tableData: any = [
   {
     name: "Петр Петрович Петров",
     division: "Служба ИУС",

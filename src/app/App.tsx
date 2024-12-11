@@ -9,53 +9,74 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Content from "./Content/Content";
 import { routersData } from "./data";
 import { SiderItemType } from "../widgets/Sidebar/types/types";
+import Page404 from "../pages/errorPages/Page404/Page404";
+import LoadingPage from "../pages/LoadingPage/LoadingPage";
+import { useEffect, useMemo, useState } from "react";
 
 LicenseManager.setLicenseKey(
   "BOARD4ALL_NDEwMjM1MTIwMDAwMA==8f4481b5cc626ad79fe91bc5f4e52e3d",
 );
 
 export default function App() {
-  const getChildrenRoutes = (item: SiderItemType, parentPath: string = "") => {
-    // console.log("item", item);
-    // console.log("parentPath", parentPath);
-    const currentPath = `${parentPath}${item.path}`;
-    console.log("currentPath", currentPath);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [showLoadingScreen, setShowLoadingScreen] = useState<boolean>(true);
 
-    return item?.children?.map((child, indexChild) => {
-      console.log("path", `${currentPath}${child.path}`);
-      return (
-        <Route
-          key={`${child.path}-${indexChild}`}
-          path={`${currentPath}${child.path}`}
-          element={child.element}
-        >
-          {child?.children?.length
-            ? getChildrenRoutes(child, currentPath)
-            : null}
-        </Route>
-      );
-    });
+  useEffect(() => {
+    // Симуляция загрузки данных
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500); // Замените на реальный запрос данных
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleFadeOutComplete = () => {
+    setShowLoadingScreen(false);
   };
+
+  const getAllRoutes = (routes: SiderItemType[], basePath: string = "") => {
+    let allRoutes: SiderItemType[] = [];
+
+    routes.forEach((route) => {
+      const fullPath = `${basePath}${route.path}`;
+      allRoutes.push({ path: fullPath, element: route.element });
+
+      if (route.children) {
+        allRoutes = allRoutes.concat(getAllRoutes(route.children, fullPath));
+      }
+    });
+
+    return allRoutes;
+  };
+
+  const allRoutes = useMemo(() => getAllRoutes(routersData), [routersData]);
+
   return (
     <div>
+      {/* <React.StrictMode> */}
       <BrowserRouter>
-        {/* <LoadingPage /> */}
-        <>
-          <Routes>
-            <Route path="/" element={<Content />}>
-              {routersData.map((item, index) => (
+        {showLoadingScreen && (
+          <LoadingPage
+            isLoading={isLoading}
+            onFadeOutComplete={handleFadeOutComplete}
+          />
+        )}
+        <Routes>
+          <Route path="/" element={<Content />}>
+            <>
+              {allRoutes.map((item, index) => (
                 <Route
                   key={`${item.path}-${index}`}
                   path={item.path}
                   element={item.element}
-                >
-                  {item.children?.length ? getChildrenRoutes(item) : null}
-                </Route>
+                />
               ))}
-            </Route>
-          </Routes>
-        </>
+              <Route path="*" element={<Page404 />} />
+            </>
+          </Route>
+        </Routes>
       </BrowserRouter>
+      {/* </React.StrictMode> */}
     </div>
   );
 }
