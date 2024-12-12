@@ -8,7 +8,6 @@ type Props = TooltipProps & {};
 const TooltipLocal: React.FC<Props> = ({
   placement,
   trigger,
-  overlayStyle,
   children,
   ...props
 }: Props) => {
@@ -16,10 +15,9 @@ const TooltipLocal: React.FC<Props> = ({
     <Tooltip
       placement={placement || "right"}
       trigger={trigger || "hover"}
-      overlayStyle={overlayStyle || { minWidth: "300px" }}
       {...props}
     >
-      <div>{children || <BiQuestionMark />}</div>
+      {children || <BiQuestionMark size={20} />}
     </Tooltip>
   );
 };

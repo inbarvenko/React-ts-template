@@ -4,9 +4,10 @@ import { colors } from "../../assets/colors";
 
 const LayoutWrapper = styled.div`
   flex: 1;
-  /* Закоммитить, если верхнее меню */
-  /* height: 100vh; */
   overflow: auto;
+
+  /* Закоммитить, если верхнее меню */
+  height: 100vh;
 
   background-color: #d3ebf8;
 
@@ -58,7 +59,8 @@ const LayoutWrapper = styled.div`
     width: 100%;
     flex: 1;
 
-    display: grid;
+    display: flex;
+    flex-direction: column;
   }
 `;
 

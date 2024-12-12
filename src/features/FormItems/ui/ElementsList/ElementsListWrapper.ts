@@ -1,8 +1,11 @@
 import styled from "styled-components";
-import { colors } from "../../../shared/assets/colors";
+import { colors } from "../../../../shared/assets/colors";
 
 export const ElementsListWrapper = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
   .flex-row {
     display: flex;

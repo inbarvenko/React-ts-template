@@ -99,10 +99,12 @@ const Table: React.FC<Props> = ({ data, columnDefs, ...props }: Props) => {
   );
 
   return (
-    <TableWrapper className="ag-theme-quartz">
+    <TableWrapper>
       <AgGridReact
         pagination
         enableCharts
+        className="ag-theme-quartz"
+        containerStyle={{ height: "auto", width: "100%" }}
         suppressClickEdit={props.editing}
         localeText={AG_GRID_LOCALE_RU}
         defaultColDef={defaultColDef}

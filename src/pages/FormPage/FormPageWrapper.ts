@@ -11,18 +11,10 @@ const FormPageWrapper = styled.div`
     textarea {
       font-family: "HeliosCondC";
     }
-
-    &-item {
-      height: 50px;
-    }
   }
 
   .ant-divider-horizontal {
     margin: 12px 0;
-  }
-
-  .input-text {
-    flex: 1;
   }
 
   .ant-form-item {

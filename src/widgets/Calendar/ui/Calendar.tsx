@@ -4,7 +4,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import multiMonthPlugin from "@fullcalendar/multimonth";
-
+import moment from "moment";
 import { ModalEvent, ModalForm } from "../../../features/Modals";
 import { CalendarWrapper } from "./CalendarWrapper";
 import { DatePicker, Form, Input } from "antd";
@@ -15,7 +15,6 @@ import {
   FormatterInput,
 } from "@fullcalendar/core/index.js";
 import { ThemeEnum } from "../../../shared/constants/theme";
-import moment from "moment";
 import { ModalEventType } from "../../../features/Modals/types/types";
 import { EventType } from "../types/types";
 import dayjs from "dayjs";

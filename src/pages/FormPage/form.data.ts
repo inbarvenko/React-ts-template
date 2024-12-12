@@ -1,3 +1,5 @@
+import { FormType } from "../../features/FormItems";
+
 type FormRadioType = {
   value: string;
   name: string;
@@ -9,11 +11,6 @@ export const formRadioData: FormRadioType[] = [
   { value: "3", name: "3" },
   { value: "4", name: "4" },
 ];
-
-type FormType = {
-  name: string;
-  email: string;
-};
 
 export const formData: FormType[] = [
   {
